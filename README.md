@@ -1,4 +1,4 @@
-Pour s'authentifier en tant qu'administrateur Drupal :
+##Pour s'authentifier en tant qu'administrateur Drupal :
 
 
 nom d'utilisateur : admin
@@ -7,7 +7,7 @@ mot de passe : A13*G 8-_-a
 
 
 
-Pour accéder en tant qu'utilisateur :
+##Pour accéder en tant qu'utilisateur :
 
 
 nom d'utilisateur : test
