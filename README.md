@@ -7,7 +7,7 @@ mot de passe : A13*G 8-_-a
 
 
 
-pour accéder en tant qu'utilisateur :
+Pour accéder en tant qu'utilisateur :
 
 
 nom d'utilisateur : test
