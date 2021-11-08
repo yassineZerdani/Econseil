@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 128.76598 145.76668" x="0px" y="0px" version="1.1" id="svg30" sodipodi:docname="noun_1261773_cc.svg" width="128.76598" height="145.76668" inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata id="metadata36">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>14-Process</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs34"/>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="725" inkscape:window-height="480" id="namedview32" showgrid="false" fit-margin-top="10" fit-margin-left="10" fit-margin-right="10" fit-margin-bottom="10" inkscape:zoom="2.95" inkscape:cx="68.065932" inkscape:cy="48.492204" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg30"/>
+  <title id="title2">14-Process</title>
+  <g data-name="14-Process" id="g24" transform="matrix(2.0719386,0,0,2.0719386,-0.96055519,3.7841842)">
+    <path d="m 41.9,44 c -0.21,1.19 -0.86,3 -2.9,3 H 28 v 2 h 11 c 4,0 5,-3.92 5,-6 A 1,1 0 0 0 43,42 H 18 a 1,1 0 0 0 -0.71,0.29 l -12,12 L 6.7,55.7 18.41,44 Z" id="path4" inkscape:connector-curvature="0"/>
+    <path d="m 55.71,35.29 a 1,1 0 0 0 -1.41,0 l -9,9 1.41,1.41 8.21,-8.21 a 4.26,4.26 0 0 1 -0.63,5.8 L 42.59,55 H 22 a 1,1 0 0 0 -0.71,0.29 l -7,7 1.41,1.41 6.71,-6.7 H 43 a 1,1 0 0 0 0.71,-0.29 l 12,-12 c 3.72,-3.71 1.62,-7.79 0,-9.42 z" id="path6" inkscape:connector-curvature="0"/>
+    <rect x="24" y="47" width="2" height="2" id="rect8"/>
+    <path d="m 16,25 h 3.59 a 13.94,13.94 0 0 0 1.1,2.65 l -2.54,2.54 a 1,1 0 0 0 0,1.41 l 4.24,4.24 a 1,1 0 0 0 1.41,0 L 26.34,33.3 A 14,14 0 0 0 29,34.41 V 38 a 1,1 0 0 0 1,1 h 6 a 1,1 0 0 0 1,-1 v -3.59 a 14,14 0 0 0 2.65,-1.1 l 2.54,2.54 a 1,1 0 0 0 1.41,0 l 4.24,-4.24 a 1,1 0 0 0 0,-1.41 L 45.3,27.66 A 13.94,13.94 0 0 0 46.41,25 H 50 a 1,1 0 0 0 1,-1 v -6 a 1,1 0 0 0 -1,-1 h -3.59 a 13.94,13.94 0 0 0 -1.1,-2.65 l 2.54,-2.54 a 1,1 0 0 0 0,-1.41 L 43.61,6.15 a 1,1 0 0 0 -1.41,0 L 39.65,8.69 A 13.88,13.88 0 0 0 37,7.59 V 4 A 1,1 0 0 0 36,3 h -6 a 1,1 0 0 0 -1,1 v 3.59 a 13.88,13.88 0 0 0 -2.65,1.1 L 23.81,6.15 a 1,1 0 0 0 -1.41,0 l -4.24,4.24 a 1,1 0 0 0 0,1.41 l 2.54,2.54 A 13.94,13.94 0 0 0 19.59,17 H 16 a 1,1 0 0 0 -1,1 v 6 a 1,1 0 0 0 1,1 z m 1,-6 h 3.36 a 1,1 0 0 0 1,-0.77 12,12 0 0 1 1.46,-3.52 1,1 0 0 0 -0.14,-1.23 l -2.41,-2.38 2.83,-2.83 2.38,2.38 a 1,1 0 0 0 1.23,0.14 11.9,11.9 0 0 1 3.52,-1.46 1,1 0 0 0 0.77,-1 V 5 h 4 v 3.36 a 1,1 0 0 0 0.77,1 11.9,11.9 0 0 1 3.52,1.46 1,1 0 0 0 1.23,-0.14 l 2.38,-2.41 2.83,2.83 -2.38,2.38 a 1,1 0 0 0 -0.14,1.23 12,12 0 0 1 1.46,3.52 1,1 0 0 0 1,0.77 H 49 v 4 h -3.36 a 1,1 0 0 0 -1,0.77 12,12 0 0 1 -1.46,3.52 1,1 0 0 0 0.14,1.23 l 2.38,2.38 -2.8,2.83 -2.38,-2.38 a 1,1 0 0 0 -1.23,-0.14 11.92,11.92 0 0 1 -3.52,1.46 1,1 0 0 0 -0.77,1 V 37 h -4 v -3.36 a 1,1 0 0 0 -0.77,-1 11.92,11.92 0 0 1 -3.52,-1.46 1,1 0 0 0 -1.23,0.14 l -2.38,2.41 -2.83,-2.83 2.38,-2.38 a 1,1 0 0 0 0.14,-1.23 12,12 0 0 1 -1.46,-3.52 1,1 0 0 0 -1,-0.77 H 17 Z" id="path10" inkscape:connector-curvature="0"/>
+    <path d="m 33,27 a 6,6 0 1 0 -6,-6 6,6 0 0 0 6,6 z m 0,-10 a 4,4 0 1 1 -4,4 4,4 0 0 1 4,-4 z" id="path12" inkscape:connector-curvature="0"/>
+    <circle cx="33" cy="21" r="2" id="circle14"/>
+    <rect x="32" y="10" width="2" height="2" id="rect16"/>
+    <rect x="32" y="30" width="2" height="2" id="rect18"/>
+    <rect x="42" y="20" width="2" height="2" id="rect20"/>
+    <rect x="22" y="20" width="2" height="2" id="rect22"/>
+  </g>
+</svg>
