@@ -55,7 +55,7 @@ const Sidebar = () => {
       <div id="sidebar" className="sidebar sidebar-with-footer">
 
         <div className="app-brand">
-          <a href="/index.html">
+          <NavLink to="/">
             <svg className="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
               height="33" viewBox="0 0 30 33">
               <g fill="none" fill-rule="evenodd">
@@ -64,7 +64,7 @@ const Sidebar = () => {
               </g>
             </svg>
             <span className="brand-name">Dashboard</span>
-          </a>
+          </NavLink>
         </div>
 
         <div className='sidebar-scrollbar'>
