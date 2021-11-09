@@ -102,7 +102,14 @@ const ProcessusAchat = () => {
   //   );
   // });
 
-  const displayDocs = Proc.documents.map((document, key) => {
+  const displayDocs = Proc.documents.slice(pagesVisitedDocs, pagesVisitedDocs+elementsPerPage).filter(document => {
+    if (searchTerm == "") {
+        return document;
+    }
+    else if (document.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return document;
+    }
+    }).map((document, key) => {
 
     return (
        <tr>
@@ -117,7 +124,14 @@ const ProcessusAchat = () => {
    } 
  );
 
- const displayProcedures = Proc.procedures.map((procedure, key) => {
+ const displayProcedures = Proc.procedures.slice(pagesVisitedProc, pagesVisitedProc+elementsPerPage).filter(procedure => {
+  if (searchTerm == "") {
+      return procedure;
+  }
+  else if (procedure.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return procedure;
+  }
+  }).map((procedure, key) => {
 
   return (
      <tr>
@@ -190,7 +204,7 @@ const ProcessusAchat = () => {
       <div className={` ${isActiveThree ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-          <input type="text" className="input-search" placeholder="Rechercher..." />
+          <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
         <div className="table-wrapper" style={{width: '95%', marginLeft: '2.5%'}}>
           <table className="da-table" >
@@ -224,7 +238,7 @@ const ProcessusAchat = () => {
       <div className={` ${isActiveFour ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-          <input type="text" className="input-search" placeholder="Rechercher..." />
+          <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
       <div className="table-wrapper" style={{width: '95%', marginLeft: '2.5%'}}>
         <table className="da-table" >
@@ -248,7 +262,7 @@ const ProcessusAchat = () => {
           <ReactPaginate
               previousLabel={'<'}
               nextLabel={'>'}
-              pageCount={1}
+              pageCount={procCount}
               
               containerClassName={"page"}
               previousClassName={"page__btn"}
@@ -262,7 +276,7 @@ const ProcessusAchat = () => {
       <div className={` ${isActiveFive ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-          <input type="text" className="input-search" placeholder="Rechercher..." />
+          <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
         <div className="table-wrapper" style={{width: '95%', marginLeft: '2.5%'}}>
           <table className="da-table" >
@@ -286,7 +300,7 @@ const ProcessusAchat = () => {
             <ReactPaginate
               previousLabel={'<'}
               nextLabel={'>'}
-              pageCount={1}
+              pageCount={docsCount}
               
               containerClassName={"page"}
               previousClassName={"page__btn"}

@@ -33,19 +33,22 @@ const Home = (props) => {
 
   const displayProcedures = procorgs.map((procedure, key) => {
 
-    return (
-      <tr>
-        <td data-label="PROCÉDURE :">
-          <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-          <NavLink onClick={() => { dispatch(getProcedure(procedure.id)) }} to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
-        </td>
-        <td data-label="PROCESSUS DE RATTACHEMENT :">
-          <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-          <NavLink onClick={() => { dispatch(getOneProcess(procedure.processus.id)) }} to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
-        </td>
-        <td data-label="DATE DE PUBLICATION :">{setTime(procedure.date)}</td>
-      </tr>
-    );
+    if(key<7){
+      
+      return (
+        <tr>
+          <td data-label="PROCÉDURE :">
+            <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+            <NavLink onClick={() => { dispatch(getProcedure(procedure.id)) }} to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
+          </td>
+          <td data-label="PROCESSUS DE RATTACHEMENT :">
+            <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+            <NavLink onClick={() => { dispatch(getOneProcess(procedure.processus.id)) }} to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
+          </td>
+          <td data-label="DATE DE PUBLICATION :">{setTime(procedure.date)}</td>
+        </tr>
+      );
+  }
   });
 
   /*--------------*/

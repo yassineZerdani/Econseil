@@ -123,7 +123,14 @@ const ProcessusOrganisationnel = () => {
     /* Show documents */
 
 
-  const displayDocs = Proc.documents.map((document, key) => {
+  const displayDocs = Proc.documents.slice(pagesVisited, pagesVisited+ordersPerPage).filter(document => {
+    if (searchTerm == "") {
+        return document;
+    }
+    else if (document.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return document;
+    }
+    }).map((document, key) => {
 
      return (
         <tr>
@@ -141,7 +148,14 @@ const ProcessusOrganisationnel = () => {
 
   /* Show operations */
 
-  const displayOps = Proc.operations.map((operation, key) => {
+  const displayOps = Proc.operations.slice(pagesVisited, pagesVisited+ordersPerPage).filter(operation => {
+    if (searchTerm == "") {
+        return operation;
+    }
+    else if (operation.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return operation;
+    }
+    }).map((operation, key) => {
 
      return (
        <tr>
@@ -156,7 +170,7 @@ const ProcessusOrganisationnel = () => {
              Acteurs
             </NavLink>
          </td>
-         <td data-label="DESCRIPTION :">order.attributes.field_description_operation.value</td>
+         <td data-label="DESCRIPTION :"></td>
        </tr>
      );
    } );
@@ -266,7 +280,7 @@ const ProcessusOrganisationnel = () => {
       <div className={` ${isActiveSix ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-          <input type="text" className="input-search" placeholder="Rechercher..." />
+          <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
         <div className="table-wrapper" style={{width: '95%', marginLeft: '2.5%'}}>
           <table className="da-table" >
@@ -297,7 +311,7 @@ const ProcessusOrganisationnel = () => {
       <div className={` ${isActiveSeven ? '' : 'po-table-wrapper-b'}`} >
         <div className="search-box" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
-          <input type="text" className="input-search" placeholder="Rechercher..." />
+          <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
         <div className="table-wrapper" style={{width: '95%', marginLeft: '2.5%'}}>
           <table className="da-table" >
