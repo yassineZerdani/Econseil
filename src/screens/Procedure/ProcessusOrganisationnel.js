@@ -184,7 +184,7 @@ const ProcessusOrganisationnel = () => {
     <div>
       <h3 className="po-h">{Proc.nom}</h3>
       <div>
-        <ul className="nav-po">
+        <ul className="nav-po-org">
           <li onClick={() => isActivee(1)} className={`nlpo ${isActiveOne ? 'nlpo-active' : ''}`}>Diagramme</li>
           <li onClick={() => isActivee(2)}  className={`nlpo ${isActiveTwo ? 'nlpo-active' : ''}`}>Fiche procédure</li>
           <li onClick={() => isActivee(3)} className={`nlpo ${isActiveThree ? 'nlpo-active' : ''}`}>Objet</li>
@@ -196,7 +196,7 @@ const ProcessusOrganisationnel = () => {
       </div>
       <div className={` ${isActiveOne ? '' : 'po-table-wrapper-b'}`}>
         <br/>
-        <div style={{marginLeft:'40%'}} className="col-12" role="group">
+        <div className="veBtnContainer" role="group">
           <button type="button" className="btn btn-icon" onclick="ZoomIn(1)">
             <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
           </button>

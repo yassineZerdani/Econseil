@@ -644,6 +644,30 @@
   height: 8vh;
 }
 
+.nav-po-org {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #212a39;
+  width: 95%;
+  margin: auto;
+  height: 8vh;
+}
+
+.nav-po-achat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #212a39;
+  width: 95%;
+  margin: auto;
+  height: 8vh;
+}
+
 .nlpo {
   color: white;
   padding: 15px 0px;
@@ -793,7 +817,22 @@
     margin: auto;
     height: 6vh;
   }
+  .nav-po-org {
+    margin: auto;
+    height: 22.67vh;
+    display: block;
+  }
+  .nav-po-achat {
+    height: 17vh;
+    display: block;
+  }
   .nav-po li {
+    display: inline-block;
+  }
+  .nav-po-org li {
+    display: inline-block;
+  }
+  .nav-po-achat li {
     display: inline-block;
   }
   .nlpo {
