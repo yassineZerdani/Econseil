@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getProcedure } from '../../redux/procorgs/action';
 import { getOneProcess } from '../../redux/procmets/action';
@@ -64,16 +64,7 @@ const Home = (props) => {
                 <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/organigramme'
                   style={{ color: 'white' }}>Organigramme</NavLink></h6>
               </div>
-              <div style={{
-                padding: '0',
-                margin: '0',
-                height: '100%',
-                width: '100%',
-                backgroundImage: `url("assets/images/organigramme (black).svg")`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: '90% 60%'
-              }}></div>
+              <div className="home-card" style={{backgroundImage: `url("assets/images/organigramme (black).svg")`}}></div>
             </div>
           </div>
           <div className="col-lg-3 col-sm-6 my-2">
@@ -82,16 +73,7 @@ const Home = (props) => {
                 <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/vue-ensemble'
                   style={{ color: 'white' }}>Vue d'ensemble</NavLink></h6>
               </div>
-              <div style={{
-                padding: '0',
-                margin: '0',
-                height: '100%',
-                width: '100%',
-                backgroundImage: `url("assets/images/ve.svg")`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: '90% 60%'
-              }}></div>
+              <div className="home-card" style={{backgroundImage: `url("assets/images/ve.svg")`}}></div>
             </div>
           </div>
           <div className="col-lg-3 col-sm-6 my-2">
@@ -100,16 +82,7 @@ const Home = (props) => {
                 <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/procedures'
                   style={{ color: 'white' }}>Index des Procédures</NavLink></h6>
               </div>
-              <div style={{
-                padding: '0',
-                margin: '0',
-                height: '100%',
-                width: '100%',
-                backgroundImage: `url("assets/images/process.svg")`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: '90% 60%'
-              }}></div>
+              <div className="home-card" style={{backgroundImage: `url("assets/images/process.svg")`}}></div>
             </div>
           </div>
           <div className="col-lg-3 col-sm-6 my-2">
@@ -117,16 +90,7 @@ const Home = (props) => {
               <div className="card-header bg-secondary">
                 <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/documents-utiles' style={{ color: 'white' }}>Documents</NavLink></h6>
               </div>
-              <div style={{
-                padding: '0',
-                margin: '0',
-                height: '100%',
-                width: '100%',
-                backgroundImage: `url("assets/images/Document.svg")`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: '90% 60%'
-              }}></div>
+              <div className="home-card" style={{backgroundImage: `url("assets/images/Document.svg")`}}></div>
             </div>
           </div>
         </div>

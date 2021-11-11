@@ -78,7 +78,7 @@ const IndexProcedure = (props) => {
                 <td data-label="Activité de rattachement">
 
                 </td>
-                <td data-label="Date d'application">{setTime(procedure.date)}</td>
+                <td data-label="Date d'application">{procedure.date}</td>
             </tr>
         );
     } );
