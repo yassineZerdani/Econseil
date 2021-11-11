@@ -162,6 +162,7 @@ $poppins: "Poppins", sans-serif;
         text-overflow: ellipsis;
     }
     .da-table td {
+        margin-right: 10px;
         border-bottom: 1px solid #ddd;
         display: block;
         font-size: 0.8em;
@@ -172,6 +173,7 @@ $poppins: "Poppins", sans-serif;
         float: left;
         font-weight: bold;
         text-transform: uppercase;
+        margin-left: 10px;
     }
     .da-table td:last-child {
         border-bottom: 0;

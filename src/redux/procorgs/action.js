@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../api/config';
+import { setTime } from '../../functions/setTime';
 
 export const getProcedures = () => async dispatch => {
 
@@ -18,7 +19,7 @@ export const getProcedures = () => async dispatch => {
 
         Procedure['processus'] = {nom: "", id: ""};
         Procedure['nom'] = order.attributes.title;
-        Procedure['date'] = order.attributes.created;
+        Procedure['date'] = setTime(order.attributes.created);
         Procedure['id'] = order.id;
 
         response.data.included.map(file => {

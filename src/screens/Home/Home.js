@@ -4,7 +4,6 @@ import { getProcedure } from '../../redux/procorgs/action';
 import { getOneProcess } from '../../redux/procmets/action';
 import { useDispatch, connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
-import { setTime } from '../../functions/setTime';
 
 const Home = (props) => {
 
@@ -45,7 +44,7 @@ const Home = (props) => {
             <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
             <NavLink onClick={() => { dispatch(getOneProcess(procedure.processus.id)) }} to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
           </td>
-          <td data-label="DATE DE PUBLICATION :">{setTime(procedure.date)}</td>
+          <td data-label="DATE DE PUBLICATION :">{procedure.date}</td>
         </tr>
       );
   }

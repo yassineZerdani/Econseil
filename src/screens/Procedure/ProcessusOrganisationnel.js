@@ -237,7 +237,7 @@ const ProcessusOrganisationnel = () => {
               <tr>
                 <td>{Proc.code}</td>
                 <td><img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;<NavLink to={'/ProcessusAchat/'+Proc.processus.id}>{Proc.processus.nom}</NavLink></td>
-                <td>{setTime(Proc.date)}</td>
+                <td>{Proc.date}</td>
               </tr>
             </tbody>
           </table>
