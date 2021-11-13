@@ -857,3 +857,21 @@ $poppins: "Poppins", sans-serif;
     background-position: center;
     background-size: 90% 60%;
 }
+
+.organigramme {
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    top: 0px;
+    left: 120px;
+    height: 600px;
+    width: 80%;
+}
+
+@media screen and (max-width: 620px) {
+    .organigramme {
+        left: 30px;
+    }
+}

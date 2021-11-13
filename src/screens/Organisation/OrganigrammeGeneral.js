@@ -1,11 +1,8 @@
-import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import * as imageSizing from '../../functions/ImageSizing';
 import Tree, { withStyles } from 'react-vertical-tree-react-17';
 import { useDispatch, connect } from 'react-redux';
-import { getActors, getActor, getSubActors } from '../../redux/acteurs/action';
-import { useEffect, useState, } from 'react';
+import { getActors, getActor } from '../../redux/acteurs/action';
+import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 
@@ -41,7 +38,6 @@ const OrganigrammeGeneral = (props) => {
 
 
     const { acteurs } = props
-    console.log(acteurs)
 
     var Acteurs = acteurs.reduce((unique, o) => {
         if(!unique.some(obj => obj.id === o.id)) {
@@ -50,8 +46,6 @@ const OrganigrammeGeneral = (props) => {
         return unique;
       },[]);
   
-  
-      console.log(Acteurs);
 
     /*-------------*/
 
@@ -73,7 +67,6 @@ const OrganigrammeGeneral = (props) => {
 
     });
 
-    console.log(dataa);
 
      dataa.map( acteur => {
 
@@ -89,32 +82,20 @@ const OrganigrammeGeneral = (props) => {
 
      dataa.map( acteur => {
         if(acteur.parent.id == ''){
+            acteur.parent = null;
             final.push(acteur);
         }
      })
 
-     console.log(dataa);
+     console.log(final);
 
 
     return (
         <div>
             <h5 className="vde">Organigramme général</h5>
 
-            <div  className="veBtnContainer" role="group">
-              <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
-                <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
-              </button>
-              <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
-                <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
-              </button>
-              <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
-                <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
-              </button>
-            </div>
-
-            <div className="Diag" id="Diag1" style={{display: 'block'}} >
-                <img className="OGimg" usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
-                <StyledTree className="Diag" id="Diag1" style={{display: 'block'}} data={final} direction onClick={ item => {
+            <div className="organigramme" >
+                <StyledTree data={final} direction onClick={ item => {
                     dispatch(getActor(item.id));
                     history.push("/acteur/"+item.id)
                     } } />

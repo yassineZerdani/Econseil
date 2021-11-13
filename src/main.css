@@ -958,4 +958,28 @@
   background-position: center;
   background-size: 90% 60%;
 }
+
+.organigramme {
+  margin: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0px;
+  left: 120px;
+  height: 600px;
+  width: 80%;
+}
+
+@media screen and (max-width: 620px) {
+  .organigramme {
+    left: 30px;
+  }
+}
 /*# sourceMappingURL=main.css.map */
