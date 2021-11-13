@@ -20,8 +20,6 @@ export default function Acteur() {
     };
   }
 
-
-
   /* Get Actor */
 
   const Acteur = useSelector(state => state.acteurs.acteur);

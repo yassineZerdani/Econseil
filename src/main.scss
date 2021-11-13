@@ -143,6 +143,10 @@ $poppins: "Poppins", sans-serif;
         width: 1px;
     }
 
+    .da-table tbody {
+        background-color:#F5F6FA;
+    }
+
     .da-table tr {
         border-bottom: 20px solid #f5f6fa;
         display: block;
@@ -185,16 +189,17 @@ $poppins: "Poppins", sans-serif;
     }
     .da-table td:before {
         content: attr(data-label);
-
         width: 50%;
         height: 100%;
-
         font-weight: 600;
         font-size: 11px;
         text-align: left;
     }
 
     .da-table tr:nth-child(even) {
+        background: #ffffff;
+    }
+    .da-table tr:nth-child(odd) {
         background: #ffffff;
     }
 }
