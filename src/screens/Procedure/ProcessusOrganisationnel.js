@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setTime } from '../../functions/setTime';
 import { getOperation } from '../../redux/operations/action';
 import { getOperationActors } from '../../redux/operations/action';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import * as imageSizing from '../../functions/ImageSizing';
 
 
 const ProcessusOrganisationnel = () => {
@@ -197,24 +197,20 @@ const ProcessusOrganisationnel = () => {
       <div className={` ${isActiveOne ? '' : 'po-table-wrapper-b'}`}>
         <br/>
         <div className="veBtnContainer" role="group">
-          <button type="button" className="btn btn-icon" onclick="ZoomIn(1)">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
             <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
           </button>
-          <button type="button" className="btn btn-icon" onclick="ZoomOut(1)">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
             <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
           </button>
-          <button type="button" className="btn btn-icon" onclick="OriginalSize(1);">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
             <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
-          </button>
-          <button type="button" className="btn btn-icon" onclick="SizeToWidth(1);">
-            <FontAwesomeIcon icon={faArrowsAltV}></FontAwesomeIcon>
-          </button>
-          <button type="button" className="btn btn-icon" onclick="SizeToHeight(1);">
-            <FontAwesomeIcon icon={faArrowsAltH}></FontAwesomeIcon>
           </button>
         </div>
         <br/>
-        <img style={{height: '700px'}} className="po-pic" src={Proc.image}></img>
+        <div className="Diag" id="Diag1" style={{display: 'block'}} >
+          <img src={Proc.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
+        </div>
       </div>
 
     

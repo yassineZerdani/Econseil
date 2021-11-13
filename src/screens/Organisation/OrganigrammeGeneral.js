@@ -1,6 +1,7 @@
 import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import * as imageSizing from '../../functions/ImageSizing';
 
 const OrganigrammeGeneral = () => {
 
@@ -10,24 +11,18 @@ const OrganigrammeGeneral = () => {
             <h5 className="vde">Organigramme général</h5>
 
             <div  className="veBtnContainer" role="group">
-                <button type="button" className="btn btn-icon" onclick="ZoomIn(1)">
-                    <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
+                <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="ZoomOut(1)">
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
                     <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="OriginalSize(1);">
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
                     <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="SizeToWidth(1);">
-                    <FontAwesomeIcon icon={faArrowsAltV}></FontAwesomeIcon>
-                </button>
-                <button type="button" className="btn btn-icon" onclick="SizeToHeight(1);">
-                    <FontAwesomeIcon icon={faArrowsAltH}></FontAwesomeIcon>
-                </button>
             </div>
-            <div>
-            <img className="OGimg" src="assets/images/93bf9d395db42247_c_fa10fac95ff2442d.png" alt="../images/93bf9d395db42247_c_fa10fac95ff2442d.png" usemap="#FA10FAC95FF2442D" border="0" />
+            <div className="Diag" id="Diag1" style={{display: 'block'}} >
+                <img className="OGimg" usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
             </div>
         </div>
     )

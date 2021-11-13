@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import { faSearchPlus, faSearchMinus, faExpand,faArrowsAltV,faArrowsAltH} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { getVueEnsemble } from '../../redux/vueens/action';
+import * as imageSizing from '../../functions/ImageSizing';
 
 const VueEnsemble = (props) => {
 
@@ -41,24 +42,18 @@ const VueEnsemble = (props) => {
             <h5 className="vde">Vue d'ensemble</h5>
 
             <div style={{marginLeft: '2%'}} className="veBtnContainer" role="group">
-                <button type="button" className="btn btn-icon" onclick="ZoomIn(1)">
-                    <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
+                <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="ZoomOut(1)">
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
                     <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="OriginalSize(1);">
+                <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
                     <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
                 </button>
-                <button type="button" className="btn btn-icon" onclick="SizeToWidth(1);">
-                    <FontAwesomeIcon icon={faArrowsAltV}></FontAwesomeIcon>
-                </button>
-                <button type="button" className="btn btn-icon" onclick="SizeToHeight(1);">
-                    <FontAwesomeIcon icon={faArrowsAltH}></FontAwesomeIcon>
-                </button>
             </div>
-            <div className="test">
-                <img src={Image} className="OGimg"/>
+            <div className="Diag test" id="Diag1" style={{display: 'block'}} >
+                <img src={Image} className="OGimg" usemap="#4E1EEDC85FF233F4" border={0} />
             </div>
         </div>
     )

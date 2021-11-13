@@ -6,6 +6,7 @@ import { getOneProcess } from '../../redux/procmets/action';
 import { getProcedure } from '../../redux/procorgs/action';
 import ReactPaginate from 'react-paginate';
 import {useState} from 'react';
+import * as imageSizing from '../../functions/ImageSizing';
 
 
 
@@ -162,24 +163,20 @@ const ProcessusAchat = () => {
       <div className={` ${isActiveOne ? '' : 'po-table-wrapper-b'}`}>
         <br/>
         <div className="veBtnContainer" role="group">
-          <button type="button" className="btn btn-icon" onclick="ZoomIn(1)">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
             <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
           </button>
-          <button type="button" className="btn btn-icon" onclick="ZoomOut(1)">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
             <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
           </button>
-          <button type="button" className="btn btn-icon" onclick="OriginalSize(1);">
+          <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
             <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
-          </button>
-          <button type="button" className="btn btn-icon" onclick="SizeToWidth(1);">
-            <FontAwesomeIcon icon={faArrowsAltV}></FontAwesomeIcon>
-          </button>
-          <button type="button" className="btn btn-icon" onclick="SizeToHeight(1);">
-            <FontAwesomeIcon icon={faArrowsAltH}></FontAwesomeIcon>
           </button>
         </div>
         <br/>
-        <img style={{height: '700px'}} className="po-pic" src={Proc.image}></img>
+        <div className="Diag" id="Diag1" style={{display: 'block'}} >
+          <img src={Proc.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
+        </div>
       </div>
       <div className={` ${isActiveTwo ? '' : 'po-table-wrapper-b'}`}>
       <div className="po-table-wrapper">
