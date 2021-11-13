@@ -1,12 +1,12 @@
 import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import $ from "jquery";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getOneProcess } from '../../redux/procmets/action';
 import { getProcedure } from '../../redux/procorgs/action';
 import ReactPaginate from 'react-paginate';
-import {useState} from 'react'
+import {useState} from 'react';
+
 
 
 const ProcessusAchat = () => {
