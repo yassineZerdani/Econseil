@@ -58,12 +58,15 @@ export const getProcess = () => async dispatch => {
                     }
                 }
 
-                // if ((order.relationships.field_proc_met_proc_met_pa.data.id != null) && (file.id === order.relationships.field_proc_met_proc_met_pa.data.id || file.id === undefined)) {
 
-                //     order.parent = file 
-                //     Procsorg = [...Procsorg, order];
+                if (order.relationships.field_proc_met_proc_met_pa.data != null) {
+                    if (file.id === order.relationships.field_proc_met_proc_met_pa.data.id || file.id === undefined) {
 
-                // }
+                        order.parent = file;
+                        Procsorg = [...Procsorg, order];
+
+                    }
+                }
 
                 if (file.id === order.relationships.field_img_proc_met.data.id || file.id === undefined) {
 
@@ -100,7 +103,7 @@ export const getOneProcess = (identifier) => async dispatch => {
     var procmet = {};
 
 
-    procmet['nom'] = "";
+    procmet['nom'] = order.attributes.title;
     procmet['code'] = order.attributes.field_code_proc_metier;
     procmet['documents'] = [];
     procmet['procedures'] = [];

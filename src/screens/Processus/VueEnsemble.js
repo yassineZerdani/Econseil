@@ -1,65 +1,118 @@
-import React, { useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { faSearchPlus, faSearchMinus, faExpand,faArrowsAltV,faArrowsAltH} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { connect } from 'react-redux';
-import { getVueEnsemble } from '../../redux/vueens/action';
-import * as imageSizing from '../../functions/ImageSizing';
+
+import { useDispatch, connect } from 'react-redux';
+import { getProcess } from '../../redux/procmets/action';
+import { getOneProcess } from '../../redux/procmets/action';
+import { useHistory } from "react-router-dom";
+import Tree, { withStyles } from 'react-vertical-tree-react-17';
+
+
 
 const VueEnsemble = (props) => {
 
-    let Image = '';
+    const styles = {
+        lines: {
+          color: '#1890ff',
+          height: '90px',
+        },
+        node: {
+          backgroundColor: '#4C84FF',
+          border: '1px solid #1890ff',
+        },
+        text: {
+          color: 'white',
+        }
+      }
 
-    const { vueensemble } = props;
+    const StyledTree = withStyles(styles)(Tree)
 
-    /* Get Vue Ensemble */
+    const history = useHistory();
+
+    const dispatch = useDispatch();
+
+    /* Get Process */
 
     useEffect(() => {
 
-        props.getVueEnsemble()
+        props.getProcess()
 
-    }, []);
+    },[]);
 
+    const { procmets } = props
 
-    var vueEnsemble = vueensemble.reduce((unique, o) => {
+    var Procmets = procmets.reduce((unique, o) => {
         if(!unique.some(obj => obj.id === o.id)) {
           unique.push(o);
         }
         return unique;
       },[]);
-    
-    if(vueEnsemble[0] === undefined){
-        Image = '';
-    }
-    else{
-        Image = vueEnsemble[0].image;
-    }
 
-    /*----------------*/
+    /*-------------*/
+
+    console.log(Procmets);
+
+    // data have to be below structure
+
+    const dataa = [];
+
+
+    Procmets.map( process => {
+
+        var processus = {};
+
+        processus["id"] = process.id;
+        processus["name"] = process.attributes.title;
+        processus["parent"] = {id: process.parent.id};
+        processus["children"] = [];
+
+        dataa.push(processus);
+
+    });
+
+    console.log(dataa);
+
+
+     dataa.map( process => {
+
+         dataa.map( actor => {
+
+             if( actor.parent.id == process.id ){
+                process.children.push(actor);
+             };
+         });
+     });
+
+     const final = [];
+
+     dataa.map( process => {
+        if(process.parent.id == undefined){
+            process.parent = null;
+            final.push(process);
+        }
+     })
+
+     console.log(final);
+
 
 
     return (
         <div>
             <h5 className="vde">Vue d'ensemble</h5>
 
-            <div style={{marginLeft: '2%'}} className="veBtnContainer" role="group">
-                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
-                <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
-                </button>
-                <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomOutMultipleView()}>
-                    <FontAwesomeIcon icon={faSearchMinus}></FontAwesomeIcon>
-                </button>
-                <button type="button" className="btn btn-icon" onClick={() => imageSizing.OriginalSizeMultipleView()}>
-                    <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
-                </button>
-            </div>
-            <div className="Diag test" id="Diag1" style={{display: 'block'}} >
-                <img src={Image} className="OGimg" usemap="#4E1EEDC85FF233F4" border={0} />
+            <div className="organigramme" >
+                <StyledTree data={final} direction onClick={ item => {
+                    dispatch(getOneProcess(item.id));
+                    history.push("/ProcessusAchat/"+item.id)
+                    } } />
             </div>
         </div>
     )
 }
 const mapStateToProps = (state) => {
     return {
-      vueensemble: state.vueensemble.vueensemble  }
+      procmets: state.procmets.procmets 
     }
-export default connect(mapStateToProps, { getVueEnsemble })(VueEnsemble);
+}
+export default connect(mapStateToProps, { getProcess })(VueEnsemble);
