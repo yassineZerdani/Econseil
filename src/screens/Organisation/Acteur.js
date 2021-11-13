@@ -32,7 +32,7 @@ export default function Acteur() {
     <div>
 
  
-      <h5 className="po-h">Acteur.nom</h5>
+      <h5 className="po-h">{Acteur.nom}</h5>
       <div>
         <ul className="nav-po">
           <li onClick={() => isActivee(1)} className={`nlpo ${isActiveOne ? 'nlpo-active' : ''}`}>Définition</li>

@@ -11,6 +11,7 @@ export const getData = () => async dispatch => {
         //   Authorization: `Bearer ${token}`,
         // }
       })
+    
 
     dispatch(
         {
