@@ -89,18 +89,18 @@ const ProcessusAchat = () => {
   const dispatch = useDispatch();
 
 
-  // const displayChilds = Proc.childs.map( (process, key) => {
+  const displayChilds = Proc.childs.map( (process, key) => {
 
-  //   return(
-  //     <tr>
-  //       <td data-label="SOUS PROCESSUS :">
-  //         <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-  //         <NavLink onClick={() => { dispatch(getOneProcess(process.id)) }} to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
-  //       </td>
-  //       <td data-label="FINALITÉ :"></td>
-  //     </tr>
-  //   );
-  // });
+     return(
+       <tr>
+         <td data-label="SOUS PROCESSUS :">
+           <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+           <NavLink onClick={() => { dispatch(getOneProcess(process.id)) }} to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
+         </td>
+         <td data-label="FINALITÉ :"></td>
+       </tr>
+     );
+   });
 
   const displayDocs = Proc.documents.slice(pagesVisitedDocs, pagesVisitedDocs+elementsPerPage).filter(document => {
     if (searchTerm == "") {
@@ -202,7 +202,7 @@ const ProcessusAchat = () => {
       </div>
       </div>
       <div className={` ${isActiveThree ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -215,17 +215,12 @@ const ProcessusAchat = () => {
               </tr>
             </thead>
             <tbody>
-                
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
+              {displayChilds}
             </tbody>
             <ReactPaginate
               previousLabel={'<'}
               nextLabel={'>'}
-              pageCount={1}
-              
+              pageCount={childsCount}
               containerClassName={"page"}
               previousClassName={"page__btn"}
               nextClassName={"page__btn"}
@@ -236,7 +231,7 @@ const ProcessusAchat = () => {
         </div>
       </div>
       <div className={` ${isActiveFour ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -252,18 +247,11 @@ const ProcessusAchat = () => {
           </thead>
           <tbody>
             {displayProcedures}
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
           </tbody>
           <ReactPaginate
               previousLabel={'<'}
               nextLabel={'>'}
               pageCount={procCount}
-              
               containerClassName={"page"}
               previousClassName={"page__btn"}
               nextClassName={"page__btn"}
@@ -274,7 +262,7 @@ const ProcessusAchat = () => {
       </div>
       </div>
       <div className={` ${isActiveFive ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -290,18 +278,11 @@ const ProcessusAchat = () => {
             </thead>
             <tbody>
               {displayDocs}
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
             <ReactPaginate
               previousLabel={'<'}
               nextLabel={'>'}
               pageCount={docsCount}
-              
               containerClassName={"page"}
               previousClassName={"page__btn"}
               nextClassName={"page__btn"}

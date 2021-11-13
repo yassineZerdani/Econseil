@@ -278,7 +278,7 @@ const ProcessusOrganisationnel = () => {
         </div>
       </div>
       <div className={` ${isActiveSix ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box" style={{position: 'absolute', top:'215px'}}>
+        <div className="search-box search-box-responsive" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -309,7 +309,7 @@ const ProcessusOrganisationnel = () => {
         </div>
       </div>
       <div className={` ${isActiveSeven ? '' : 'po-table-wrapper-b'}`} >
-        <div className="search-box" style={{position: 'absolute', top:'215px'}}>
+        <div className="search-box search-box-responsive" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
