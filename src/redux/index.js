@@ -7,10 +7,12 @@ import vueensReducer from './vueens/reducer';
 import appReducer from './application/reducer';
 import diagReducer from './diagramme/reducer';
 import opReducer from './operations/reducer';
+import sidebarReducer from './sidebar/reducer';
 
 
 export default combineReducers({
 
+    sidebar: sidebarReducer,
     documents: docsReducer,
     procorgs: procedureReducer,
     acteurs: actorsReducer,

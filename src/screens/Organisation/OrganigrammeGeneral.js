@@ -15,7 +15,8 @@ const OrganigrammeGeneral = (props) => {
         },
         node: {
           backgroundColor: '#4C84FF',
-          border: '1px solid #1890ff',
+          border: 'solid #1890ff',
+          borderRadius: '0px',
         },
         text: {
           color: 'white',

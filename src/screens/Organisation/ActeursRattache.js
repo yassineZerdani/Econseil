@@ -1,4 +1,4 @@
-import { useEffect, useState, } from 'react';
+import React, { useState, } from 'react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate from 'react-paginate';

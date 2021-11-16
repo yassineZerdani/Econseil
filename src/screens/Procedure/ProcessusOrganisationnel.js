@@ -7,7 +7,7 @@ import { getOperation } from '../../redux/operations/action';
 import { getOperationActors } from '../../redux/operations/action';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 
 

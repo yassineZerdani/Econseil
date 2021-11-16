@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { getOneProcess } from '../../redux/procmets/action';
 import { getProcedure } from '../../redux/procorgs/action';
 import ReactPaginate from 'react-paginate';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 
 
