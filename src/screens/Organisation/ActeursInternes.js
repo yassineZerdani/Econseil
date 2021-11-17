@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate from 'react-paginate';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
-import { getActors, getActor, getSubActors } from '../../redux/acteurs/action';
+import { getActors, getSubActors } from '../../redux/acteurs/action';
 
 
 
@@ -22,17 +22,7 @@ const ActeursInternes = (props) => {
 
 
     const { acteurs } = props
-    console.log(acteurs)
 
-    var Acteurs = acteurs.reduce((unique, o) => {
-        if(!unique.some(obj => obj.id === o.id)) {
-          unique.push(o);
-        }
-        return unique;
-      },[]);
-  
-  
-      console.log(Acteurs);
 
     /*-------------*/
 
@@ -45,7 +35,7 @@ const ActeursInternes = (props) => {
 
     const ordersPerPage = 7;
     const pagesVisited = pageNumber*ordersPerPage;
-    const pageCount = Math.ceil(Acteurs.length/ordersPerPage);
+    const pageCount = Math.ceil(acteurs.length/ordersPerPage);
 
     const changePage = ({selected}) => {
         setPageNumber(selected);
@@ -62,7 +52,7 @@ const ActeursInternes = (props) => {
 
     /* Show actors */
 
-    const display = Acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter(acteur => {
+    const display = acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter(acteur => {
         if (searchTerm == "") {
             return acteur;
         }
@@ -82,12 +72,12 @@ const ActeursInternes = (props) => {
                 <tr key={key} >
                     <td data-label="Acteur :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.parent.id)) }} className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td data-label="Acteurs rattachés :">
                         <NavLink onClick={() => { dispatch(getSubActors(acteur.childs)) }} className="text-dark" to={'/acteurs-rattache/'+acteur.id}>Rattachement</NavLink>
@@ -99,7 +89,7 @@ const ActeursInternes = (props) => {
                 <tr key={key} >
                     <td data-label="Acteur :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">Pas d'acteur parent</td>
@@ -119,12 +109,12 @@ const ActeursInternes = (props) => {
                 <tr key={key} >
                     <td data-label="Acteur :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.parent.id)) }} className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td data-label="Acteurs rattachés :">Pas de sous acteurs</td>
                 </tr>
@@ -134,7 +124,7 @@ const ActeursInternes = (props) => {
                 <tr key={key} >
                     <td data-label="Acteur :">
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">Pas d'acteur parent</td>

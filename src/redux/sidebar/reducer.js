@@ -1,13 +1,13 @@
 
 const initialState = {
-    isactive : [true, false, false, false, false],
+    is_sidebar_active : [true, false, false, false, false],
 };
 const sidebarReducer = (state = initialState, action) => {
     switch(action.type){
-        case 'IS_ACTIVE':
+        case 'IS_SIDEBAR_ACTIVE':
             return{
                 ...state,
-                isactive: action.payload
+                is_sidebar_active: action.payload
             }
     default: return state}}
 

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Sidebar = () => {
 
-  const isactive = useSelector(state => state.sidebar.isactive);
+  const is_sidebar_active = useSelector(state => state.sidebar.is_sidebar_active);
 
   const dispatch = useDispatch();
 
@@ -32,19 +32,19 @@ const Sidebar = () => {
 
           <ul className="nav sidebar-inner" id="sidebar-menu" >
 
-            <li onClick={() => dispatch(isActive(1))} className={`has-sub ${isactive[0] ? 'active' : ''}`} >
+            <li onClick={() => dispatch(isActive(1))} className={`has-sub ${is_sidebar_active[0] ? 'active' : ''}`} >
               <NavLink exact={true} activeclassName='is-active' to='/' aria-controls="dashboard">
                 <i className="mdi mdi-home"></i>
                 <span className="nav-text">Home</span>
               </NavLink>
             </li>
 
-            <li  onClick={() => dispatch(isActive(2))} className={`has-sub ${isactive[1] ? 'active expand' : ''}`} >
+            <li  onClick={() => dispatch(isActive(2))} className={`has-sub ${is_sidebar_active[1] ? 'active expand' : ''}`} >
               <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#organisation" aria-expanded="false" aria-controls="organisation">
                 <i className="mdi mdi-file-tree"></i>
                 <span className="nav-text">Organisation</span> <b className="caret"></b>
               </a>
-              <ul  className="collapse"  id="organisation" data-parent="#sidebar-menu">
+              <ul className={` ${is_sidebar_active[1] ? '' : 'collapse'}`}  id="organisation" data-parent="#sidebar-menu">
                   <div className="sub-menu">
                     <li >
                       <NavLink className="sidenav-item-link" to='/organigramme'>
@@ -60,12 +60,12 @@ const Sidebar = () => {
               </ul>
             </li>
 
-            <li onClick={() => dispatch(isActive(3))} className={`has-sub ${isactive[2] ? 'active expand' : ''}`}>
+            <li onClick={() => dispatch(isActive(3))} className={`has-sub ${is_sidebar_active[2] ? 'active expand' : ''}`}>
             <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#processus" aria-expanded="false" aria-controls="processus">
                 <i className="mdi mdi-file-document-box"></i>
                 <span className="nav-text">Processus</span> <b className="caret yo2"></b>
               </a>
-              <ul  className="collapse"  id="processus" data-parent="#sidebar-menu">
+              <ul  className={` ${is_sidebar_active[2] ? '' : 'collapse'}`}  id="processus" data-parent="#sidebar-menu">
                   <div className="sub-menu">
                     <li >
                       <NavLink className="sidenav-item-link" to='/vue-ensemble'>
@@ -81,12 +81,12 @@ const Sidebar = () => {
               </ul>
             </li>
 
-            <li onClick={() => dispatch(isActive(4))} className={`has-sub ${isactive[3] ? 'active expand' : ''}`}>
+            <li onClick={() => dispatch(isActive(4))} className={`has-sub ${is_sidebar_active[3] ? 'active expand' : ''}`}>
               <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#procedure" aria-expanded="false" aria-controls="procedure">
                 <i className="mdi mdi-settings"></i>
                 <span className="nav-text">Procédure</span> <b className="caret yo3"></b>
               </a>
-              <ul  className="collapse"  id="procedure" data-parent="#sidebar-menu">
+              <ul  className={` ${is_sidebar_active[3] ? '' : 'collapse'}`}  id="procedure" data-parent="#sidebar-menu">
                   <div className="sub-menu">
                     <li >
                       <NavLink className="sidenav-item-link" to='/procedures'>
@@ -97,12 +97,12 @@ const Sidebar = () => {
               </ul>
             </li>
 
-            <li onClick={() => dispatch(isActive(5))} className={`has-sub ${isactive[4] ? 'active expand' : ''}`}>
+            <li onClick={() => dispatch(isActive(5))} className={`has-sub ${is_sidebar_active[4] ? 'active expand' : ''}`}>
               <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#documentsutiles" aria-expanded="false" aria-controls="documentsutiles">
                 <i className="mdi mdi-clipboard-text"></i>
                 <span className="nav-text">Documents utiles</span> <b className="caret yo4"></b>
               </a>
-              <ul  className="collapse"  id="documentsutiles" data-parent="#sidebar-menu">
+              <ul  className={` ${is_sidebar_active[4] ? '' : 'collapse'}`}  id="documentsutiles" data-parent="#sidebar-menu">
                   <div className="sub-menu">
                     <li >
                       <NavLink className="sidenav-item-link" to='/documents-utiles'>

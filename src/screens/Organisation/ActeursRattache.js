@@ -5,7 +5,6 @@ import ReactPaginate from 'react-paginate';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getActor } from '../../redux/acteurs/action';
 
 const ActeursRattache = () => {
 
@@ -54,7 +53,7 @@ const ActeursRattache = () => {
             <tr key={key} >
                 <td data-label="Acteur :">
                     <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                    <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                    <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                 </td>
                 <td data-label="Type">{acteur.type}</td>
             </tr>

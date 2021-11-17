@@ -8,10 +8,14 @@ import appReducer from './application/reducer';
 import diagReducer from './diagramme/reducer';
 import opReducer from './operations/reducer';
 import sidebarReducer from './sidebar/reducer';
-
+import actorSidebarReducer from './navbar/acteur/reducer';
+import procmetSidebarReducer from './navbar/procmet/reducer';
+import procorgSidebarReducer from './navbar/procorg/reducer';
 
 export default combineReducers({
-
+    actor_sidebar: actorSidebarReducer,
+    procmet_sidebar: procmetSidebarReducer,
+    procorg_sidebar: procorgSidebarReducer,
     sidebar: sidebarReducer,
     documents: docsReducer,
     procorgs: procedureReducer,

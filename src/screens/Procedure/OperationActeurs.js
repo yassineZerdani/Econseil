@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate from 'react-paginate';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getActor, getSubActors } from '../../redux/acteurs/action';
+import { getSubActors } from '../../redux/acteurs/action';
 
 
 
@@ -74,12 +74,12 @@ const OperationActeurs = () => {
                 <tr key={key} >
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.parent.id)) }} className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td>
                         <NavLink onClick={() => { dispatch(getSubActors(acteur.childs)) }} className="text-dark" to={'/acteurs-rattache/'+acteur.id}>Rattachement</NavLink>
@@ -91,7 +91,7 @@ const OperationActeurs = () => {
                 <tr key={key} >
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>Pas d'acteur parent</td>
@@ -111,12 +111,12 @@ const OperationActeurs = () => {
                 <tr key={key} >
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.parent.id)) }} className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td>Pas de sous acteurs</td>
                 </tr>
@@ -126,7 +126,7 @@ const OperationActeurs = () => {
                 <tr key={key} >
                     <td>
                         <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                        <NavLink onClick={() => { dispatch(getActor(acteur.id)) }} className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
+                        <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>Pas d'acteur parent</td>

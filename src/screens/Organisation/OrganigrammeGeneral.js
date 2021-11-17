@@ -1,7 +1,7 @@
 import React from 'react';
 import Tree, { withStyles } from 'react-vertical-tree-react-17';
 import { useDispatch, connect } from 'react-redux';
-import { getActors, getActor } from '../../redux/acteurs/action';
+import { getActors } from '../../redux/acteurs/action';
 import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
@@ -97,7 +97,6 @@ const OrganigrammeGeneral = (props) => {
 
             <div className="organigramme" >
                 <StyledTree data={final} direction onClick={ item => {
-                    dispatch(getActor(item.id));
                     history.push("/acteur/"+item.id)
                     } } />
             </div>

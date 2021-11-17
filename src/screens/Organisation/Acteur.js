@@ -1,29 +1,34 @@
 import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as imageSizing from '../../functions/ImageSizing';
+import { isActive } from '../../redux/navbar/acteur/action';
 
-export default function Acteur() {
+export default function Acteur(props) {
 
-  const [isActiveOne, setIsActiveOne] = useState(true);
-  const [isActiveTwo, setIsActiveTwo] = useState(false);
+  const isactive = useSelector(state => state.actor_sidebar.isactive);
 
-  const isActivee = (n) => {
-
-    if(n === 1){
-      setIsActiveOne(true);
-      setIsActiveTwo(false);
-    };
-    if(n === 2){
-      setIsActiveOne(false);
-      setIsActiveTwo(true);
-    };
-  }
+  const dispatch = useDispatch();
 
   /* Get Actor */
 
-  const Acteur = useSelector(state => state.acteurs.acteur);
+  const acteurs = useSelector(state => state.acteurs.acteurs);
+
+  var Acteurs = acteurs.reduce((unique, o) => {
+    if(!unique.some(obj => obj.id === o.id)) {
+      unique.push(o);
+    }
+    return unique;
+  },[]);
+
+  var Actor = {};
+
+  Acteurs.map( acteur => {
+      if( acteur.id == props.match.params.id){
+        Actor = acteur;
+      }
+  });
 
   /*-----------*/
 
@@ -32,15 +37,15 @@ export default function Acteur() {
     <div>
 
  
-      <h5 className="po-h">{Acteur.nom}</h5>
+      <h5 className="po-h">{Actor.nom}</h5>
       <div>
         <ul className="nav-po">
-          <li onClick={() => isActivee(1)} className={`nlpo ${isActiveOne ? 'nlpo-active' : ''}`}>Définition</li>
-          <li onClick={() => isActivee(2)}  className={`nlpo ${isActiveTwo ? 'nlpo-active' : ''}`}>Diagramme</li>
+          <li onClick={() => dispatch(isActive(1))} className={`nlpo ${isactive[0] ? 'nlpo-active' : ''}`}>Définition</li>
+          <li onClick={() => dispatch(isActive(2))}  className={`nlpo ${isactive[1] ? 'nlpo-active' : ''}`}>Diagramme</li>
         </ul>
       </div>
 
-      <div className={` ${isActiveTwo ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[1] ? '' : 'po-table-wrapper-b'}`}>
       <div  className="veBtnContainer" role="group">
               <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
                 <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon>
@@ -57,7 +62,7 @@ export default function Acteur() {
             </div>
       </div>
 
-      <div  className={`po-table-wrapper ${isActiveOne ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
+      <div  className={`po-table-wrapper ${isactive[0] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <table className="po-table" >
           <thead>
             <tr>
@@ -68,17 +73,17 @@ export default function Acteur() {
           </thead>
           <tbody>
             <tr>
-              <td style={{color:'grey', fontWeight: '500'}}>{Acteur.type}</td>
-              <td>{Acteur.profile}</td>
-              <td>{Acteur.email}</td>
+              <td style={{color:'grey', fontWeight: '500'}}>{Actor.type}</td>
+              <td>{Actor.profile}</td>
+              <td>{Actor.email}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className={`po-table-wrapper ${isActiveOne ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
+      <div className={`po-table-wrapper ${isactive[1] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <div>
           <h5 style={{padding: '1%', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Description</h5>
-          <p style={{padding: '2%', color: 'grey'}}>{Acteur.description}</p>
+          <p style={{padding: '2%', color: 'grey'}}>{Actor.description}</p>
         </div>
       </div>
     </div>

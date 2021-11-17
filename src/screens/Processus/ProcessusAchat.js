@@ -7,55 +7,14 @@ import { getProcedure } from '../../redux/procorgs/action';
 import ReactPaginate from 'react-paginate';
 import React, {useState} from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
-
+import { isActive } from '../../redux/navbar/procmet/action';
 
 
 const ProcessusAchat = () => {
 
-  const [isActiveOne, setIsActiveOne] = useState(true);
-  const [isActiveTwo, setIsActiveTwo] = useState(false);
-  const [isActiveThree, setIsActiveThree] = useState(false);
-  const [isActiveFour, setIsActiveFour] = useState(false);
-  const [isActiveFive, setIsActiveFive] = useState(false);
+  const isactive = useSelector(state => state.procmet_sidebar.isactive);
 
-  const isActivee = (n) => {
-
-    if(n === 1){
-      setIsActiveOne(true);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-    };
-    if(n === 2){
-      setIsActiveOne(false);
-      setIsActiveTwo(true);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-    };
-    if(n === 3){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(true);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-    };
-    if(n === 4){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(true);
-      setIsActiveFive(false);
-    };
-    if(n === 5){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(true);
-    };
-  }
+  const dispatch = useDispatch();
 
   /* Get Process */
 
@@ -87,7 +46,6 @@ const ProcessusAchat = () => {
  
   /*-------*/
 
-  const dispatch = useDispatch();
 
 
   const displayChilds = Proc.childs.map( (process, key) => {
@@ -153,14 +111,14 @@ const ProcessusAchat = () => {
       <h5 className="po-h">{Proc.nom}</h5>
       <div>
         <ul className="nav-po-achat">
-          <li onClick={() => isActivee(1)} className={`nlpo ${isActiveOne ? 'nlpo-active' : ''}`}>Diagramme</li>
-          <li onClick={() => isActivee(2)}  className={`nlpo ${isActiveTwo ? 'nlpo-active' : ''}`}>Définition</li>
-          <li onClick={() => isActivee(3)} className={`nlpo ${isActiveThree ? 'nlpo-active' : ''}`}>Activités</li>
-          <li onClick={() => isActivee(4)}  className={`nlpo ${isActiveFour ? 'nlpo-active' : ''}`}>Procédures</li>
-          <li onClick={() => isActivee(5)} className={`nlpo ${isActiveFive ? 'nlpo-active' : ''}`}>Documents annexes</li>
+          <li onClick={() => dispatch(isActive(1))} className={`nlpo ${isactive[0] ? 'nlpo-active' : ''}`}>Diagramme</li>
+          <li onClick={() => dispatch(isActive(2))}  className={`nlpo ${isactive[1] ? 'nlpo-active' : ''}`}>Définition</li>
+          <li onClick={() => dispatch(isActive(3))} className={`nlpo ${isactive[2] ? 'nlpo-active' : ''}`}>Activités</li>
+          <li onClick={() => dispatch(isActive(4))}  className={`nlpo ${isactive[3] ? 'nlpo-active' : ''}`}>Procédures</li>
+          <li onClick={() => dispatch(isActive(5))} className={`nlpo ${isactive[4] ? 'nlpo-active' : ''}`}>Documents annexes</li>
         </ul>
       </div>
-      <div className={` ${isActiveOne ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[0] ? '' : 'po-table-wrapper-b'}`}>
         <br/>
         <div className="veBtnContainer" role="group">
           <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
@@ -178,7 +136,7 @@ const ProcessusAchat = () => {
           <img src={Proc.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
         </div>
       </div>
-      <div className={` ${isActiveTwo ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[1] ? '' : 'po-table-wrapper-b'}`}>
       <div className="po-table-wrapper">
         <table className="po-table" >
           <thead>
@@ -190,15 +148,15 @@ const ProcessusAchat = () => {
           </thead>
           <tbody>
             <tr>
-              <td>{Proc.code}</td>
-              <td></td>
-              <td></td>
+              <td style={{width: "1000px"}}>{Proc.code}</td>
+              <td style={{width: "1000px"}}>test</td>
+              <td style={{width: "1000px"}}>test</td>
             </tr>
           </tbody>
         </table>
       </div>
       </div>
-      <div className={` ${isActiveThree ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[2] ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
@@ -227,7 +185,7 @@ const ProcessusAchat = () => {
           </table>
         </div>
       </div>
-      <div className={` ${isActiveFour ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[3] ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
@@ -258,7 +216,7 @@ const ProcessusAchat = () => {
         </table>
       </div>
       </div>
-      <div className={` ${isActiveFive ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[4] ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>

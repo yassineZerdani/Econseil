@@ -9,83 +9,15 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
 import React, { useState } from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
+import { download } from '../../functions/downloadDocuments';
+import { isActive } from '../../redux/navbar/procorg/action';
 
 
 const ProcessusOrganisationnel = () => {
 
-  const [isActiveOne, setIsActiveOne] = useState(true);
-  const [isActiveTwo, setIsActiveTwo] = useState(false);
-  const [isActiveThree, setIsActiveThree] = useState(false);
-  const [isActiveFour, setIsActiveFour] = useState(false);
-  const [isActiveFive, setIsActiveFive] = useState(false);
-  const [isActiveSix, setIsActiveSix] = useState(false);
-  const [isActiveSeven, setIsActiveSeven] = useState(false);
+  const isactive = useSelector(state => state.procorg_sidebar.isactive);
 
-  const isActivee = (n) => {
-
-    if(n === 1){
-      setIsActiveOne(true);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-      setIsActiveSix(false);
-      setIsActiveSeven(false);
-    };
-    if(n === 2){
-      setIsActiveOne(false);
-      setIsActiveTwo(true);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-      setIsActiveSix(false);
-      setIsActiveSeven(false);
-    };
-    if(n === 3){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(true);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-      setIsActiveSeven(false);
-    };
-    if(n === 4){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(true);
-      setIsActiveFive(false);
-      setIsActiveSix(false);
-      setIsActiveSeven(false);
-    };
-    if(n === 5){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(true);
-      setIsActiveSix(false);
-      setIsActiveSeven(false);
-    };
-    if(n === 6){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-      setIsActiveSix(true);
-      setIsActiveSeven(false);
-    };
-    if(n === 7){
-      setIsActiveOne(false);
-      setIsActiveTwo(false);
-      setIsActiveThree(false);
-      setIsActiveFour(false);
-      setIsActiveFive(false);
-      setIsActiveSix(false);
-      setIsActiveSeven(true);
-    };
-  }
+  const dispatch = useDispatch();
 
   const Proc = useSelector(state => state.procorgs.procorg);
 
@@ -104,8 +36,6 @@ const ProcessusOrganisationnel = () => {
 
   /*---------------*/
 
-
-    const dispatch = useDispatch();
 
     /* Pager */
 
@@ -135,7 +65,7 @@ const ProcessusOrganisationnel = () => {
      return (
         <tr>
           <td data-label="DOCUMENT :">
-            <a download><img src="/images/extr.ico.gif" class="pd-b-7"/>&nbsp;&nbsp;{document.nom}</a>
+            <button onClick={()=>download(document.file)}><img src="/images/extr.ico.gif" class="pd-b-7" />&nbsp;&nbsp;{document.nom}</button>
           </td>
           <td data-label="CATÉGORIE :"></td>
           <td data-label="RÉFÉRENCE :"></td>
@@ -185,16 +115,16 @@ const ProcessusOrganisationnel = () => {
       <h3 className="po-h">{Proc.nom}</h3>
       <div>
         <ul className="nav-po-org">
-          <li onClick={() => isActivee(1)} className={`nlpo ${isActiveOne ? 'nlpo-active' : ''}`}>Diagramme</li>
-          <li onClick={() => isActivee(2)}  className={`nlpo ${isActiveTwo ? 'nlpo-active' : ''}`}>Fiche procédure</li>
-          <li onClick={() => isActivee(3)} className={`nlpo ${isActiveThree ? 'nlpo-active' : ''}`}>Objet</li>
-          <li onClick={() => isActivee(4)}  className={`nlpo ${isActiveFour ? 'nlpo-active' : ''}`}>Terminologie</li>
-          <li onClick={() => isActivee(5)} className={`nlpo ${isActiveFive ? 'nlpo-active' : ''}`}>Règles de gestion</li>
-          <li onClick={() => isActivee(6)}  className={`nlpo ${isActiveSix ? 'nlpo-active' : ''}`}>Opérations</li>
-          <li onClick={() => isActivee(7)} className={`nlpo ${isActiveSeven ? 'nlpo-active' : ''}`}>Documents associés</li>
+          <li onClick={() => dispatch(isActive(1))} className={`nlpo ${isactive[0] ? 'nlpo-active' : ''}`}>Diagramme</li>
+          <li onClick={() => dispatch(isActive(2))}  className={`nlpo ${isactive[1] ? 'nlpo-active' : ''}`}>Fiche procédure</li>
+          <li onClick={() => dispatch(isActive(3))} className={`nlpo ${isactive[2] ? 'nlpo-active' : ''}`}>Objet</li>
+          <li onClick={() => dispatch(isActive(4))}  className={`nlpo ${isactive[3] ? 'nlpo-active' : ''}`}>Terminologie</li>
+          <li onClick={() => dispatch(isActive(5))} className={`nlpo ${isactive[4] ? 'nlpo-active' : ''}`}>Règles de gestion</li>
+          <li onClick={() => dispatch(isActive(6))}  className={`nlpo ${isactive[5] ? 'nlpo-active' : ''}`}>Opérations</li>
+          <li onClick={() => dispatch(isActive(7))} className={`nlpo ${isactive[6] ? 'nlpo-active' : ''}`}>Documents associés</li>
         </ul>
       </div>
-      <div className={` ${isActiveOne ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[0] ? '' : 'po-table-wrapper-b'}`}>
         <br/>
         <div className="veBtnContainer" role="group">
           <button type="button" className="btn btn-icon" onClick={() => imageSizing.ZoomInMultipleView()}>
@@ -218,7 +148,7 @@ const ProcessusOrganisationnel = () => {
 
 
 
-      <div className={` ${isActiveTwo ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[1] ? '' : 'po-table-wrapper-b'}`}>
         
         <div className="po-table-wrapper">
           <table className="po-table" >
@@ -239,20 +169,20 @@ const ProcessusOrganisationnel = () => {
           </table>
         </div>
       </div>
-      <div className={`po-table-wrapper ${isActiveTwo ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
+      <div className={`po-table-wrapper ${isactive[1] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <div>
           <h5 style={{padding: '1%', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Domaine d'application</h5>
           <p style={{padding: '2%', color: 'grey'}}>{Proc.da}</p>
         </div>
       </div>
-      <div className={` ${isActiveThree ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[2] ? '' : 'po-table-wrapper-b'}`}>
         <div className="po-table-wrapper">
           <br/>
           <h5 style={{padding: '1% 0 1% 2% ', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Objet</h5>
           <p style={{padding: '2%', color: 'grey'}}>{Proc.objet}</p>
         </div>
       </div>
-      <div className={` ${isActiveFour ? 'po-table-wrapper' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[3] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`}>
         <table className="po-table" >
           <thead>
             <tr>
@@ -266,14 +196,14 @@ const ProcessusOrganisationnel = () => {
           </tbody>
         </table>
       </div>
-      <div className={`po-table-wrapper ${isActiveFive ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
+      <div className={`po-table-wrapper ${isactive[4] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <br/>
         <div>
           <h5 style={{padding: '1% 0 1% 2% ', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Règles de gestion</h5>
           <p style={{padding: '2%', color: 'grey'}}>{Proc.regles}</p>
         </div>
       </div>
-      <div className={` ${isActiveSix ? '' : 'po-table-wrapper-b'}`}>
+      <div className={` ${isactive[5] ? '' : 'po-table-wrapper-b'}`}>
         <div className="search-box search-box-responsive" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
@@ -304,7 +234,7 @@ const ProcessusOrganisationnel = () => {
           </table>
         </div>
       </div>
-      <div className={` ${isActiveSeven ? '' : 'po-table-wrapper-b'}`} >
+      <div className={` ${isactive[6] ? '' : 'po-table-wrapper-b'}`} >
         <div className="search-box search-box-responsive" style={{position: 'absolute', top:'215px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>

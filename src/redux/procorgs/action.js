@@ -86,7 +86,8 @@ export const getProcedure = (identifier) => async dispatch => {
                     if ((file.id === order.relationships.field_proc_org_docs.data[i].id) || file.id === undefined) {
 
                         let document = {
-                            nom: file.attributes.title
+                            nom: file.attributes.title,
+                            file: config.drupal_url+'//sites/econseil.dd/files/'+file.attributes.title
                         };
 
                         Procedure.documents.push(document);
