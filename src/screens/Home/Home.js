@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getProcedure } from '../../redux/procorgs/action';
-import { getOneProcess } from '../../redux/procmets/action';
 import { useDispatch, connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
 
@@ -38,11 +36,11 @@ const Home = (props) => {
         <tr>
           <td data-label="PROCÉDURE :">
             <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-            <NavLink onClick={() => { dispatch(getProcedure(procedure.id)) }} to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
+            <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
           </td>
           <td data-label="PROCESSUS DE RATTACHEMENT :">
             <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-            <NavLink onClick={() => { dispatch(getOneProcess(procedure.processus.id)) }} to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
+            <NavLink to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
           </td>
           <td data-label="DATE DE PUBLICATION :">{procedure.date}</td>
         </tr>

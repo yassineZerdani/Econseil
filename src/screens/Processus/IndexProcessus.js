@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 import { useDispatch, connect } from 'react-redux';
 import { getProcess } from '../../redux/procmets/action';
-import { getOneProcess } from '../../redux/procmets/action';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,13 +20,6 @@ const IndexProcessus = (props) => {
     },[]);
 
     const { procmets } = props
-
-    var Procmets = procmets.reduce((unique, o) => {
-        if(!unique.some(obj => obj.id === o.id)) {
-          unique.push(o);
-        }
-        return unique;
-      },[]);
 
     /*-------------*/
 
@@ -48,7 +40,7 @@ const IndexProcessus = (props) => {
 
     const ordersPerPage = 7;
     const pagesVisited = pageNumber*ordersPerPage;
-    const pageCount = Math.ceil(Procmets.length/ordersPerPage);
+    const pageCount = Math.ceil(procmets.length/ordersPerPage);
 
     const changePage = ({selected}) => {
         setPageNumber(selected);
@@ -58,11 +50,11 @@ const IndexProcessus = (props) => {
 
     /* Show Process */
 
-    const displayProcess = Procmets.slice(pagesVisited, pagesVisited+ordersPerPage).filter(process => {
+    const displayProcess = procmets.slice(pagesVisited, pagesVisited+ordersPerPage).filter(process => {
         if (searchTerm == "") {
             return process;
         }
-        else if (process.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+        else if (process.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
             return process;
         }
     }).map((process, key) => {
@@ -71,11 +63,11 @@ const IndexProcessus = (props) => {
             <tr key={key} >
                 <td data-label="code :">
                     <NavLink to={'/ProcessusAchat/'+process.id} className="text-dark" to={'/'}>{process.code}</NavLink>
-                    {process.attributes.field_code_proc_metier}
+                    {process.code}
                 </td>
                 <td data-label="processus :">
                     <img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                    <NavLink onClick={() => { dispatch(getOneProcess(process.id)) }} to={'/ProcessusAchat/'+process.id}>{process.attributes.title}</NavLink>
+                    <NavLink to={'/ProcessusAchat/'+process.id}>{process.nom}</NavLink>
                 </td>
                 <td data-label="finalité :"></td>
                 <td data-label="Activité :"></td>

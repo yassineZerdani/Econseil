@@ -3,7 +3,6 @@ import { useDispatch, connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
 import { setTime } from '../../functions/setTime';
 import { NavLink } from 'react-router-dom';
-import { getOneProcess } from '../../redux/procmets/action';
 import { getProcedure } from '../../redux/procorgs/action';
 
 
@@ -33,11 +32,6 @@ const IndexProcedure = (props) => {
 
     /*-------*/
 
-    /* Send procedure or process */
-
-    const dispatch = useDispatch();
-
-    /*--------------------*/
  
     /* Pager */
 
@@ -66,14 +60,14 @@ const IndexProcedure = (props) => {
             <tr key={key} >
                 <td data-label="Procédure">
                     <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-                    <NavLink onClick={() => { dispatch(getProcedure(procedure.id)) }} to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
+                    <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
                 </td>
                 <td data-label="Référence">
                     
                 </td>
                 <td data-label="Processus de rattachement">
                     <img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-                    <NavLink onClick={() => { dispatch(getOneProcess(procedure.processus.id)) }} to={'/ProcessusAchat/'+procedure.processus.id}>{procedure.processus.nom}</NavLink>
+                    <NavLink to={'/ProcessusAchat/'+procedure.processus.id}>{procedure.processus.nom}</NavLink>
                 </td>
                 <td data-label="Activité de rattachement">
 

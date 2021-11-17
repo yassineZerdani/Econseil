@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useDispatch, connect } from 'react-redux';
 import { getProcess } from '../../redux/procmets/action';
-import { getOneProcess } from '../../redux/procmets/action';
 import { useHistory } from "react-router-dom";
 import Tree, { withStyles } from 'react-vertical-tree-react-17';
 
@@ -63,7 +62,7 @@ const VueEnsemble = (props) => {
         var processus = {};
 
         processus["id"] = process.id;
-        processus["name"] = process.attributes.title;
+        processus["name"] = process.nom;
         processus["parent"] = {id: process.parent.id};
         processus["children"] = [];
 
@@ -103,7 +102,6 @@ const VueEnsemble = (props) => {
 
             <div className="organigramme" >
                 <StyledTree data={final} direction onClick={ item => {
-                    dispatch(getOneProcess(item.id));
                     history.push("/ProcessusAchat/"+item.id)
                     } } />
             </div>

@@ -2,9 +2,6 @@ import React, {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { getProcedure } from '../../redux/procorgs/action';
-
-
 const Operation = () => {
 
 
@@ -76,7 +73,7 @@ return (
           <tr>
             <td>
                 <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-                <NavLink onClick={() => { dispatch(getProcedure(Operation.procedure.id)) }} to={'/ProcessusOrganisationnel/' + Operation.procedure.id}>{Operation.procedure.nom}</NavLink>
+                <NavLink to={'/ProcessusOrganisationnel/' + Operation.procedure.id}>{Operation.procedure.nom}</NavLink>
             </td>
             <td>{Operation.type}</td>
             <td></td>

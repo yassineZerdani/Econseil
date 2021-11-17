@@ -1,14 +1,5 @@
 
 const initialState = {
-    procmet: {
-        nom: "",
-        code: "",
-        documents: [],
-        procedures: [],
-        childs: [],
-        parent: {},
-        image: ""
-    },
     procmets : [],
 };
 const procmetsReducer = (state = initialState, action) => {
@@ -17,11 +8,6 @@ const procmetsReducer = (state = initialState, action) => {
             return{
                 ...state,
                 procmets: action.payload
-            }
-        case 'GET_ONE_PROCMET':
-            return{
-                ...state,
-                procmet: action.payload
             }
     default: return state}}
 

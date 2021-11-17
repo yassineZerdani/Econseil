@@ -2,15 +2,13 @@ import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus, faSe
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getOneProcess } from '../../redux/procmets/action';
-import { getProcedure } from '../../redux/procorgs/action';
 import ReactPaginate from 'react-paginate';
 import React, {useState} from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 import { isActive } from '../../redux/navbar/procmet/action';
 
 
-const ProcessusAchat = () => {
+const ProcessusAchat = (props) => {
 
   const isactive = useSelector(state => state.procmet_sidebar.isactive);
 
@@ -18,9 +16,17 @@ const ProcessusAchat = () => {
 
   /* Get Process */
 
-  const Proc = useSelector(state => state.procmets.procmet);
+  const Procs = useSelector(state => state.procmets.procmets);
 
-  /*-------------*/
+  var Proc = {};
+
+  Procs.map( procedure => {
+      if( procedure.id == props.match.params.id){
+        Proc = procedure;
+      }
+  });
+
+  /*-----------*/
 
   /* States */
 
@@ -54,7 +60,7 @@ const ProcessusAchat = () => {
        <tr>
          <td data-label="SOUS PROCESSUS :">
            <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
-           <NavLink onClick={() => { dispatch(getOneProcess(process.id)) }} to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
+           <NavLink to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
          </td>
          <td data-label="FINALITÉ :"></td>
        </tr>
@@ -96,7 +102,7 @@ const ProcessusAchat = () => {
      <tr>
        <td data-label="PROCÉDURE :">
           <img src="/images/proc.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
-          <NavLink onClick={() => { dispatch(getProcedure(procedure.id)) }} to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.attributes.title}</NavLink>
+          <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.attributes.title}</NavLink>
         </td>
        <td data-label="RÉFÉRENCE :"></td>
        <td data-label="ACTIVITÉ DE RATTACHEMENT :"></td>

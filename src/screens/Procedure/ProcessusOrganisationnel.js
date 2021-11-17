@@ -13,15 +13,25 @@ import { download } from '../../functions/downloadDocuments';
 import { isActive } from '../../redux/navbar/procorg/action';
 
 
-const ProcessusOrganisationnel = () => {
+const ProcessusOrganisationnel = (props) => {
 
   const isactive = useSelector(state => state.procorg_sidebar.isactive);
 
   const dispatch = useDispatch();
 
-  const Proc = useSelector(state => state.procorgs.procorg);
+  /* Get Actor */
 
-  console.log(Proc);
+  const procedures = useSelector(state => state.procorgs.procorgs);
+
+  var Procedure = {};
+
+  procedures.map( procedure => {
+      if( procedure.id == props.match.params.id){
+        Procedure = procedure;
+      }
+  });
+
+  /*-----------*/
 
   /* States */
 
@@ -41,7 +51,7 @@ const ProcessusOrganisationnel = () => {
 
     const ordersPerPage = 7;
     const pagesVisited = pageNumber*ordersPerPage;
-    const pageCount = Math.ceil(Proc.length/ordersPerPage);
+    const pageCount = Math.ceil(Procedure.length/ordersPerPage);
 
     const changePage = ({selected}) => {
         setPageNumber(selected);
@@ -53,7 +63,7 @@ const ProcessusOrganisationnel = () => {
     /* Show documents */
 
 
-  const displayDocs = Proc.documents.slice(pagesVisited, pagesVisited+ordersPerPage).filter(document => {
+  const displayDocs = Procedure.documents.slice(pagesVisited, pagesVisited+ordersPerPage).filter(document => {
     if (searchTerm == "") {
         return document;
     }
@@ -78,7 +88,7 @@ const ProcessusOrganisationnel = () => {
 
   /* Show operations */
 
-  const displayOps = Proc.operations.slice(pagesVisited, pagesVisited+ordersPerPage).filter(operation => {
+  const displayOps = Procedure.operations.slice(pagesVisited, pagesVisited+ordersPerPage).filter(operation => {
     if (searchTerm == "") {
         return operation;
     }
@@ -112,7 +122,7 @@ const ProcessusOrganisationnel = () => {
 
   return (
     <div>
-      <h3 className="po-h">{Proc.nom}</h3>
+      <h3 className="po-h">{Procedure.nom}</h3>
       <div>
         <ul className="nav-po-org">
           <li onClick={() => dispatch(isActive(1))} className={`nlpo ${isactive[0] ? 'nlpo-active' : ''}`}>Diagramme</li>
@@ -139,7 +149,7 @@ const ProcessusOrganisationnel = () => {
         </div>
         <br/>
         <div className="Diag" id="Diag1" style={{display: 'block'}} >
-          <img src={Proc.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
+          <img src={Procedure.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
         </div>
       </div>
 
@@ -161,9 +171,9 @@ const ProcessusOrganisationnel = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{Proc.code}</td>
-                <td><img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;<NavLink to={'/ProcessusAchat/'+Proc.processus.id}>{Proc.processus.nom}</NavLink></td>
-                <td>{Proc.date}</td>
+                <td>{Procedure.code}</td>
+                <td><img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;<NavLink to={'/ProcessusAchat/'+Procedure.processus.id}>{Procedure.processus.nom}</NavLink></td>
+                <td>{Procedure.date}</td>
               </tr>
             </tbody>
           </table>
@@ -172,14 +182,14 @@ const ProcessusOrganisationnel = () => {
       <div className={`po-table-wrapper ${isactive[1] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <div>
           <h5 style={{padding: '1%', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Domaine d'application</h5>
-          <p style={{padding: '2%', color: 'grey'}}>{Proc.da}</p>
+          <p style={{padding: '2%', color: 'grey'}}>{Procedure.da}</p>
         </div>
       </div>
       <div className={` ${isactive[2] ? '' : 'po-table-wrapper-b'}`}>
         <div className="po-table-wrapper">
           <br/>
           <h5 style={{padding: '1% 0 1% 2% ', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Objet</h5>
-          <p style={{padding: '2%', color: 'grey'}}>{Proc.objet}</p>
+          <p style={{padding: '2%', color: 'grey'}}>{Procedure.objet}</p>
         </div>
       </div>
       <div className={` ${isactive[3] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`}>
@@ -191,7 +201,7 @@ const ProcessusOrganisationnel = () => {
           </thead>
           <tbody>
             <tr>
-              <td>{Proc.terminologie}</td>
+              <td>{Procedure.terminologie}</td>
             </tr>
           </tbody>
         </table>
@@ -200,7 +210,7 @@ const ProcessusOrganisationnel = () => {
         <br/>
         <div>
           <h5 style={{padding: '1% 0 1% 2% ', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Règles de gestion</h5>
-          <p style={{padding: '2%', color: 'grey'}}>{Proc.regles}</p>
+          <p style={{padding: '2%', color: 'grey'}}>{Procedure.regles}</p>
         </div>
       </div>
       <div className={` ${isactive[5] ? '' : 'po-table-wrapper-b'}`}>
