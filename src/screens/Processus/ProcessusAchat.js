@@ -165,7 +165,7 @@ const ProcessusAchat = (props) => {
       </div>
       </div>
       <div className={` ${isactive[2] ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'209px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -194,7 +194,7 @@ const ProcessusAchat = (props) => {
         </div>
       </div>
       <div className={` ${isactive[3] ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'209px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>
@@ -225,7 +225,7 @@ const ProcessusAchat = (props) => {
       </div>
       </div>
       <div className={` ${isactive[4] ? '' : 'po-table-wrapper-b'}`}>
-        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'156px'}}>
+        <div className="search-box search-box-responsive-achat" style={{position: 'absolute', top:'209px'}}>
           <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
           <input type="text" className="input-search" placeholder="Rechercher..." onChange={event => {setSearchTerm(event.target.value);}}/>
         </div>

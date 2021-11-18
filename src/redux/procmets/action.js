@@ -37,7 +37,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_metier_docs.data[i].id) || file.id === undefined) {
 
-                        procmet.documents.push(file.id);
+                        procmet.documents.push({id: file.id, nom: file.attributes.title});
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -47,7 +47,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_metier_proc_org.data[i].id) || file.id === undefined) {
 
-                        procmet.procedures.push(file.id);
+                        procmet.procedures.push({id: file.id, nom: file.attributes.title});
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -57,7 +57,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_met_sous_proc_m.data[i].id) || file.id === undefined) {
 
-                        procmet.childs.push(file);
+                        procmet.childs.push({id: file.id, nom: file.attributes.title});
                         Procsorg = [...Procsorg, procmet];
 
                     }
