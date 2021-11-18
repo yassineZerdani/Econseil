@@ -18,7 +18,7 @@ export const getData = () => async dispatch => {
     response.data.data.forEach( order => {
         console.log(order)
         response.data.included.forEach( file => {
-            if( order.relationships.field_organisme.data.id == ID){
+            if( order.relationships.field_organisme.data.id === ID){
             if ( file.id === order.relationships.field_document.data.id ){
 
                 const newDoc = [order, config.drupal_url+'//sites/econseil.dd/files/'+file.attributes.filename];

@@ -26,6 +26,8 @@ const ActeursInternes = (props) => {
 
     /*-------------*/
 
+    console.log(acteurs);
+
  
     /* Pager */
 
@@ -52,7 +54,7 @@ const ActeursInternes = (props) => {
 
     /* Show actors */
 
-    const display = acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter(acteur => {
+    const display = acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter((acteur, key) => {
         if (searchTerm == "") {
             return acteur;
         }
@@ -71,12 +73,12 @@ const ActeursInternes = (props) => {
             return (
                 <tr key={key} >
                     <td data-label="Acteur :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt=""  className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td data-label="Acteurs rattachés :">
@@ -88,7 +90,7 @@ const ActeursInternes = (props) => {
             return (
                 <tr key={key} >
                     <td data-label="Acteur :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" class="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
@@ -108,12 +110,12 @@ const ActeursInternes = (props) => {
             return (
                 <tr key={key} >
                     <td data-label="Acteur :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>
                     <td data-label="Rattachement :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td data-label="Acteurs rattachés :">Pas de sous acteurs</td>
@@ -123,7 +125,7 @@ const ActeursInternes = (props) => {
             return (
                 <tr key={key} >
                     <td data-label="Acteur :">
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td data-label="Type :">{acteur.type}</td>

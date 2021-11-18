@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
 
 const Home = (props) => {
@@ -15,37 +15,30 @@ const Home = (props) => {
 
   const { procorgs } = props
 
+  console.log(procorgs)
+
 
   /*----------------*/
 
-
-  /* Send procedure or process */
-
-  const dispatch = useDispatch();
-
-  /*--------------------*/
 
 
   /* Show procedures */
 
   const displayProcedures = procorgs.map((procedure, key) => {
-
-    if(key<7){
       
       return (
         <tr>
           <td data-label="PROCÉDURE :">
-            <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+            <img src="/images/proc.ico.gif" className="pd-b-7" alt="" />&nbsp;&nbsp;
             <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
           </td>
           <td data-label="PROCESSUS DE RATTACHEMENT :">
-            <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+            <img src="/images/busp.ico.gif" className="pd-b-7" alt="" />&nbsp;&nbsp;
             <NavLink to={'/ProcessusAchat/' + procedure.processus.id}>{procedure.processus.nom}</NavLink>
           </td>
           <td data-label="DATE DE PUBLICATION :">{procedure.date}</td>
         </tr>
       );
-  }
   });
 
   /*--------------*/

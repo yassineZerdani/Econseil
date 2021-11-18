@@ -1,7 +1,7 @@
 import React, { useEffect, useState, } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { getProcess } from '../../redux/procmets/action';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -23,18 +23,14 @@ const IndexProcessus = (props) => {
 
     /*-------------*/
 
+    console.log(procmets);
+
     /* States */
 
     const [pageNumber, setPageNumber] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
 
     /*--------*/
-
-    /* Send one process */
-
-    const dispatch = useDispatch();
-
-    /*-------------------*/
  
     /* Pager */
 
@@ -50,7 +46,7 @@ const IndexProcessus = (props) => {
 
     /* Show Process */
 
-    const displayProcess = procmets.slice(pagesVisited, pagesVisited+ordersPerPage).filter(process => {
+    const displayProcess = procmets.slice(pagesVisited, pagesVisited+ordersPerPage).filter((process, key) => {
         if (searchTerm == "") {
             return process;
         }
@@ -66,7 +62,7 @@ const IndexProcessus = (props) => {
                     {process.code}
                 </td>
                 <td data-label="processus :">
-                    <img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                    <img src="/images/busp.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                     <NavLink to={'/ProcessusAchat/'+process.id}>{process.nom}</NavLink>
                 </td>
                 <td data-label="finalité :"></td>

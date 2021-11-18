@@ -1,4 +1,4 @@
-import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+import { faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -33,6 +33,8 @@ const ProcessusOrganisationnel = (props) => {
 
   /*-----------*/
 
+  console.log(Procedure)
+
   /* States */
 
   const [pageNumber, setPageNumber] = useState(0);
@@ -63,7 +65,7 @@ const ProcessusOrganisationnel = (props) => {
     /* Show documents */
 
 
-  const displayDocs = Procedure.documents.slice(pagesVisited, pagesVisited+ordersPerPage).filter(document => {
+  const displayDocs = Procedure.documents.slice(pagesVisited, pagesVisited+ordersPerPage).filter((document, key) => {
     if (searchTerm == "") {
         return document;
     }
@@ -75,7 +77,7 @@ const ProcessusOrganisationnel = (props) => {
      return (
         <tr>
           <td data-label="DOCUMENT :">
-            <button onClick={()=>download(document.file)}><img src="/images/extr.ico.gif" class="pd-b-7" />&nbsp;&nbsp;{document.nom}</button>
+            <button onClick={()=>download(document.file)}><img src="/images/extr.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;{document.nom}</button>
           </td>
           <td data-label="CATÉGORIE :"></td>
           <td data-label="RÉFÉRENCE :"></td>
@@ -101,7 +103,7 @@ const ProcessusOrganisationnel = (props) => {
        <tr>
          <td data-label="OPÉRATION :">
            <NavLink onClick={() => { dispatch(getOperation(operation.id)) }} to={'/operation/'+operation.id}>
-             <img src="/images/op.gif" class="pd-b-7"/>&nbsp;&nbsp;
+             <img src="/images/op.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
              {operation.attributes.title}
            </NavLink>
          </td>
@@ -149,7 +151,7 @@ const ProcessusOrganisationnel = (props) => {
         </div>
         <br/>
         <div className="Diag" id="Diag1" style={{display: 'block'}} >
-          <img src={Procedure.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
+          <img src={Procedure.image} usemap="#4E1EEDC85FF233F4" alt="" className="" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
         </div>
       </div>
 
@@ -172,7 +174,7 @@ const ProcessusOrganisationnel = (props) => {
             <tbody>
               <tr>
                 <td>{Procedure.code}</td>
-                <td><img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;<NavLink to={'/ProcessusAchat/'+Procedure.processus.id}>{Procedure.processus.nom}</NavLink></td>
+                <td><img src="/images/busp.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;<NavLink to={'/ProcessusAchat/'+Procedure.processus.id}>{Procedure.processus.nom}</NavLink></td>
                 <td>{Procedure.date}</td>
               </tr>
             </tbody>

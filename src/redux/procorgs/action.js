@@ -13,7 +13,7 @@ export const getProcedures = () => async dispatch => {
 
     var Procsorgs = [];
 
-    response.data.data.map(order => {
+    response.data.data.forEach(order => {
 
         var Procedure = {};
 
@@ -33,9 +33,9 @@ export const getProcedures = () => async dispatch => {
         var docIndex = order.relationships.field_proc_org_docs.data.length;
         var opIndex = order.relationships.field_proc_org_operations.data.length;
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
-            if (order.relationships.field_organisme.data.id == ID) {
+            if (order.relationships.field_organisme.data.id === ID) {
 
 
                 for (let i = 0; i < docIndex; i++) {
@@ -58,7 +58,7 @@ export const getProcedures = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_org_operations.data[i].id) || file.id === undefined) {
 
-                        Procedure.operations.push(file);
+                        Procedure.operations.push({nom: file.attributes.title, id: file.id});
 
                     }
                 }

@@ -5,7 +5,7 @@ const setTime = (val) => {
     var dhms = val.split('-')[2];
     var d = dhms.split('T')[0];
 
-    return( y+'/'+m+'/'+'/'+d )
+    return( `${y}/${m}/${d}` )
 
 };
 

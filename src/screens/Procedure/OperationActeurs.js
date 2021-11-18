@@ -54,8 +54,8 @@ const OperationActeurs = () => {
 
     /* Show actors */
 
-    const display = Acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter(acteur => {
-        if (searchTerm == "") {
+    const display = Acteurs.slice(pagesVisited, pagesVisited+ordersPerPage).filter((acteur, key) => {
+        if (searchTerm === "") {
             return acteur;
         }
         else if (acteur.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -73,12 +73,12 @@ const OperationActeurs = () => {
             return (
                 <tr key={key} >
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td>
@@ -90,7 +90,7 @@ const OperationActeurs = () => {
             return (
                 <tr key={key} >
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
@@ -110,12 +110,12 @@ const OperationActeurs = () => {
             return (
                 <tr key={key} >
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.parent.id}>{acteur.parent.nom}</NavLink>
                     </td>
                     <td>Pas de sous acteurs</td>
@@ -125,7 +125,7 @@ const OperationActeurs = () => {
             return (
                 <tr key={key} >
                     <td>
-                        <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                        <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                         <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                     </td>
                     <td>{acteur.type}</td>

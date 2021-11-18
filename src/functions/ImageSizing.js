@@ -9,7 +9,7 @@ import {$} from "react-jquery-plugin";
 var zoomFactor = 0.1;
 
 //Global variables
-var originalImageSize = new Object;
+var originalImageSize = new Object();
 var originalCoord = new Array();
 var cpt=0;
 
@@ -22,13 +22,13 @@ function GetImageSize(diagNumber)
 	cpt=cpt+1;
 	let imgTable=document.getElementById("Diag"+diagNumber).getElementsByTagName('IMG');
 
-	if(cpt==1)
+	if(cpt===1)
 	{
 		GetOriginalSize(diagNumber);
 		//GetOriginalMap(diagNumber);
 	}
 
-	var oSize = new Object;
+	var oSize = new Object();
 	oSize.width = imgTable[0].width;
 	oSize.height = imgTable[0].height;
 	return(oSize);
@@ -57,17 +57,13 @@ function SetImageSize(width,height,diagNumber)
 ///////////////////////////////////////////////
 ////                       Zoom In Function                         ////
 ///////////////////////////////////////////////
-function diagShow(diagramId){
-$(".Diag").css('display', 'none');
-$("#"+diagramId).css('display', 'block');
 
 
-};
 function ZoomInMultipleView()
 {
 	var diagId  = 0;
 	$('.Diag').each(function(index, el) {
-    if ($(this).css('display') == 'block') {
+    if ($(this).css('display') === 'block') {
 		diagId = $(this).attr('id').substring(4,5);
     }
 });
@@ -80,7 +76,7 @@ function ZoomOutMultipleView()
 {
 	var diagId  = 0;
 	$('.Diag').each(function(index, el) {
-    if ($(this).css('display') == 'block') {
+    if ($(this).css('display') === 'block') {
 		diagId = $(this).attr('id').substring(4,5);
     }
 });
@@ -93,7 +89,7 @@ function OriginalSizeMultipleView()
 {
 	var diagId  = 0;
 	$('.Diag').each(function(index, el) {
-    if ($(this).css('display') == 'block') {
+    if ($(this).css('display') === 'block') {
 		diagId = $(this).attr('id').substring(4,5);
     }
 });
@@ -106,7 +102,7 @@ function SizeToWidthMultipleView()
 {
 	var diagId  = 0;
 	$('.Diag').each(function(index, el) {
-    if ($(this).css('display') == 'block') {
+    if ($(this).css('display') === 'block') {
 		diagId = $(this).attr('id').substring(4,5);
     }
 });
@@ -119,7 +115,7 @@ function SizeToHeightMultipleView()
 {
 	var diagId  = 0;
 	$('.Diag').each(function(index, el) {
-    if ($(this).css('display') == 'block') {
+    if ($(this).css('display') === 'block') {
 		diagId = $(this).attr('id').substring(4,5);
     }
 });

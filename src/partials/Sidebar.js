@@ -19,7 +19,7 @@ const Sidebar = () => {
           <NavLink to="/">
             <svg className="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
               height="33" viewBox="0 0 30 33">
-              <g fill="none" fill-rule="evenodd">
+              <g fill="none" fillRule="evenodd">
                 <path className="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
                 <path className="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
               </g>
@@ -33,14 +33,14 @@ const Sidebar = () => {
           <ul className="nav sidebar-inner" id="sidebar-menu" >
 
             <li onClick={() => dispatch(isActive(1))} className={`has-sub ${is_sidebar_active[0] ? 'active' : ''}`} >
-              <NavLink exact={true} activeclassName='is-active' to='/' aria-controls="dashboard">
+              <NavLink exact={true} activeClassName='is-active' to='/' aria-controls="dashboard">
                 <i className="mdi mdi-home"></i>
                 <span className="nav-text">Home</span>
               </NavLink>
             </li>
 
             <li  onClick={() => dispatch(isActive(2))} className={`has-sub ${is_sidebar_active[1] ? 'active expand' : ''}`} >
-              <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#organisation" aria-expanded="false" aria-controls="organisation">
+              <a className="sidenav-item-link" data-toggle="collapse" data-target="#organisation" aria-expanded="false" aria-controls="organisation">
                 <i className="mdi mdi-file-tree"></i>
                 <span className="nav-text">Organisation</span> <b className="caret"></b>
               </a>
@@ -61,7 +61,7 @@ const Sidebar = () => {
             </li>
 
             <li onClick={() => dispatch(isActive(3))} className={`has-sub ${is_sidebar_active[2] ? 'active expand' : ''}`}>
-            <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#processus" aria-expanded="false" aria-controls="processus">
+            <a className="sidenav-item-link" data-toggle="collapse" data-target="#processus" aria-expanded="false" aria-controls="processus">
                 <i className="mdi mdi-file-document-box"></i>
                 <span className="nav-text">Processus</span> <b className="caret yo2"></b>
               </a>
@@ -82,7 +82,7 @@ const Sidebar = () => {
             </li>
 
             <li onClick={() => dispatch(isActive(4))} className={`has-sub ${is_sidebar_active[3] ? 'active expand' : ''}`}>
-              <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#procedure" aria-expanded="false" aria-controls="procedure">
+              <a className="sidenav-item-link" data-toggle="collapse" data-target="#procedure" aria-expanded="false" aria-controls="procedure">
                 <i className="mdi mdi-settings"></i>
                 <span className="nav-text">Procédure</span> <b className="caret yo3"></b>
               </a>
@@ -98,7 +98,7 @@ const Sidebar = () => {
             </li>
 
             <li onClick={() => dispatch(isActive(5))} className={`has-sub ${is_sidebar_active[4] ? 'active expand' : ''}`}>
-              <a className="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#documentsutiles" aria-expanded="false" aria-controls="documentsutiles">
+              <a className="sidenav-item-link" data-toggle="collapse" data-target="#documentsutiles" aria-expanded="false" aria-controls="documentsutiles">
                 <i className="mdi mdi-clipboard-text"></i>
                 <span className="nav-text">Documents utiles</span> <b className="caret yo4"></b>
               </a>

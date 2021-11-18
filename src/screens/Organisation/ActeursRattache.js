@@ -40,7 +40,7 @@ const ActeursRattache = () => {
 
     /* Show actors */
 
-    const display = Acteurs.slice(pagesVisited, pagesVisited + ordersPerPage).filter(acteur => {
+    const display = Acteurs.slice(pagesVisited, pagesVisited + ordersPerPage).filter((acteur, key) => {
         if (searchTerm == "") {
             return acteur;
         }
@@ -52,7 +52,7 @@ const ActeursRattache = () => {
         return (
             <tr key={key} >
                 <td data-label="Acteur :">
-                    <img src="/images/orgu.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                    <img src="/images/orgu.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                     <NavLink className="text-dark" to={'/acteur/'+acteur.id}>{acteur.nom}</NavLink>
                 </td>
                 <td data-label="Type">{acteur.type}</td>

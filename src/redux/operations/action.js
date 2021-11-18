@@ -9,7 +9,7 @@ export const getOperations = () => async dispatch => {
 
       var Procsorg = [];
 
-    response.data.data.map(order => {
+    response.data.data.forEach(order => {
 
         order['documents'] = [];
         order['acteurs'] = [];
@@ -18,9 +18,9 @@ export const getOperations = () => async dispatch => {
         var documentsIndex = order.relationships.field_operation_docs.data.length;
         var acteursIndex = order.relationships.field_operation_acteurs.data.length
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
-            if (order.relationships.field_organisme.data.id == ID) {
+            if (order.relationships.field_organisme.data.id === ID) {
 
                 for (let i = 0; i < documentsIndex; i++) {
 
@@ -82,7 +82,7 @@ export const getOperation = (identifier) => async dispatch => {
       var documentsIndex = order.relationships.field_operation_docs.data.length;
       var acteursIndex = order.relationships.field_operation_acteurs.data.length;
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
                  for (let i = 0; i < documentsIndex; i++) {
 
@@ -134,7 +134,7 @@ export const getOperationActors = (identifier) => async dispatch => {
 
     var actors = [];
 
-    response.data.data.map(element => {
+    response.data.data.forEach(element => {
 
         var actor = {};
 
@@ -146,9 +146,9 @@ export const getOperationActors = (identifier) => async dispatch => {
 
         var childsIndex = element.relationships.field_acteur_sous_acteurs.data.length;
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
-            if (element.relationships.field_organisation.data.id == ID) {
+            if (element.relationships.field_organisation.data.id === ID) {
 
 
                 for (let i = 0; i < childsIndex; i++) {

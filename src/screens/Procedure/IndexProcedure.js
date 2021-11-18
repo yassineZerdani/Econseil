@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
-import { setTime } from '../../functions/setTime';
 import { NavLink } from 'react-router-dom';
-import { getProcedure } from '../../redux/procorgs/action';
 
 
-import { faChevronLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate from 'react-paginate';
 
@@ -22,6 +20,8 @@ const IndexProcedure = (props) => {
     },[]);
 
     const { procorgs } = props
+
+    console.log(procorgs);
 
     /*---------------*/
 
@@ -47,7 +47,7 @@ const IndexProcedure = (props) => {
 
     /* Show procedures */
 
-    const displayProcedures = procorgs.slice(pagesVisited, pagesVisited+proceduresPerPage).filter(procedure => {
+    const displayProcedures = procorgs.slice(pagesVisited, pagesVisited+proceduresPerPage).filter((procedure, key)  => {
         if (searchTerm == "") {
             return procedure;
         }
@@ -59,14 +59,14 @@ const IndexProcedure = (props) => {
         return (
             <tr key={key} >
                 <td data-label="Procédure">
-                    <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+                    <img src="/images/proc.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;
                     <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
                 </td>
                 <td data-label="Référence">
                     
                 </td>
                 <td data-label="Processus de rattachement">
-                    <img src="/images/busp.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+                    <img src="/images/busp.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
                     <NavLink to={'/ProcessusAchat/'+procedure.processus.id}>{procedure.processus.nom}</NavLink>
                 </td>
                 <td data-label="Activité de rattachement">

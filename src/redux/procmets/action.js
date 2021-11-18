@@ -12,7 +12,7 @@ export const getProcess = () => async dispatch => {
 
     var Procsorg = [];
 
-    response.data.data.map(order => {
+    response.data.data.forEach(order => {
 
         var procmet = {};
 
@@ -29,15 +29,15 @@ export const getProcess = () => async dispatch => {
         var proceduresIndex = order.relationships.field_proc_metier_proc_org.data.length
         var childsIndex = order.relationships.field_proc_met_sous_proc_m.data.length
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
-            if (order.relationships.field_organisme.data.id == ID) {
+            if (order.relationships.field_organisme.data.id === ID) {
 
                 for (let i = 0; i < docIndex; i++) {
 
                     if ((file.id === order.relationships.field_proc_metier_docs.data[i].id) || file.id === undefined) {
 
-                        procmet.documents.push(file);
+                        procmet.documents.push(file.id);
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -47,7 +47,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_metier_proc_org.data[i].id) || file.id === undefined) {
 
-                        procmet.procedures.push(file);
+                        procmet.procedures.push(file.id);
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -67,7 +67,7 @@ export const getProcess = () => async dispatch => {
                 if (order.relationships.field_proc_met_proc_met_pa.data != null) {
                     if (file.id === order.relationships.field_proc_met_proc_met_pa.data.id || file.id === undefined) {
 
-                        procmet.parent = file;
+                        procmet.parent = {id: file.id, nom: file.attributes.title};
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -75,7 +75,7 @@ export const getProcess = () => async dispatch => {
 
                 if (file.id === order.relationships.field_img_proc_met.data.id || file.id === undefined) {
 
-                    procmet.image = file
+                    procmet.image = config.drupal_url + file.attributes.uri.url
                     Procsorg = [...Procsorg, procmet];
 
                 }

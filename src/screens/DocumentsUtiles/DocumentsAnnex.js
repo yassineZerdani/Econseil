@@ -16,11 +16,12 @@ const DocumentsAnnex = (props) => {
     useEffect(() => {
 
         props.getData()
-        const { documents } = props
 
     }, []);
 
-    const { documents } = props
+    const { documents } = props;
+
+    console.log(documents);
 
     /*---------------*/
 
@@ -46,7 +47,7 @@ const DocumentsAnnex = (props) => {
 
     /* Show documents */
 
-    const displayDocuments = documents.slice(pagesVisited, pagesVisited + documentsPerPage).filter(document => {
+    const displayDocuments = documents.slice(pagesVisited, pagesVisited + documentsPerPage).filter((document, key) => {
         if (searchTerm == "") {
             return document;
         }
@@ -58,7 +59,7 @@ const DocumentsAnnex = (props) => {
         return (
             <tr key={key} >
                 <td data-label="Document :">
-                    <button onClick={()=>download(document[1])}><img src="/images/extr.ico.gif" class="pd-b-7" />&nbsp;&nbsp;{document[0].attributes.title}</button>
+                    <button onClick={()=>download(document[1])}><img src="/images/extr.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;{document[0].attributes.title}</button>
                 </td>
                 <td data-label="Référence :"></td>
                 <td data-label="Type :"></td>

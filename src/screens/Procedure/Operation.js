@@ -1,5 +1,5 @@
-import React, {  useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const Operation = () => {
@@ -9,10 +9,6 @@ const Operation = () => {
 
   console.log(Operation)
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [pageNumber, setPageNumber] = useState(0);
-
-  const dispatch = useDispatch();
 
   /* Pager */
 
@@ -72,7 +68,7 @@ return (
         <tbody>
           <tr>
             <td>
-                <img src="/images/proc.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+                <img src="/images/proc.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;
                 <NavLink to={'/ProcessusOrganisationnel/' + Operation.procedure.id}>{Operation.procedure.nom}</NavLink>
             </td>
             <td>{Operation.type}</td>

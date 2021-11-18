@@ -1,6 +1,6 @@
 import React from 'react';
 import Tree, { withStyles } from 'react-vertical-tree-react-17';
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { getActors } from '../../redux/acteurs/action';
 import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
@@ -26,8 +26,6 @@ const OrganigrammeGeneral = (props) => {
     const StyledTree = withStyles(styles)(Tree)
 
     const history = useHistory();
-
-    const dispatch = useDispatch();
 
     /* Get actors */
 
@@ -69,11 +67,11 @@ const OrganigrammeGeneral = (props) => {
     });
 
 
-     dataa.map( acteur => {
+     dataa.forEach( acteur => {
 
-         dataa.map( actor => {
+         dataa.forEach( actor => {
 
-             if( actor.parent.id == acteur.id ){
+             if( actor.parent.id === acteur.id ){
                  acteur.children.push(actor);
              };
          });
@@ -81,7 +79,7 @@ const OrganigrammeGeneral = (props) => {
 
      const final = [];
 
-     dataa.map( acteur => {
+     dataa.forEach( acteur => {
         if(acteur.parent.id == ''){
             acteur.parent = null;
             final.push(acteur);

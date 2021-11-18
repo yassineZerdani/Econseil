@@ -30,7 +30,7 @@ function App() {
 
   return (
     <Router>
-      <div class="mobile-sticky-body-overlay"></div>
+      <div className="mobile-sticky-body-overlay"></div>
       <Sidebar/>
       <div className="page-wrapper">
         <Navbar />

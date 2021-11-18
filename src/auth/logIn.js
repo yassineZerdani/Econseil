@@ -11,8 +11,7 @@ async function logIn(credentials) {
         'Content-Type': 'application/hal+json'
       },
       withCredentials: true
-    }).
-    then(data => data);
+    }).then(data => data);
 };
 
 export {logIn};

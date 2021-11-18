@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { faSearchPlus, faSearchMinus, faExpand,faArrowsAltV,faArrowsAltH} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, {useEffect} from 'react';
 
-import { useDispatch, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { getProcess } from '../../redux/procmets/action';
 import { useHistory } from "react-router-dom";
 import Tree, { withStyles } from 'react-vertical-tree-react-17';
@@ -28,8 +26,6 @@ const VueEnsemble = (props) => {
     const StyledTree = withStyles(styles)(Tree)
 
     const history = useHistory();
-
-    const dispatch = useDispatch();
 
     /* Get Process */
 
@@ -77,7 +73,7 @@ const VueEnsemble = (props) => {
 
          dataa.map( actor => {
 
-             if( actor.parent.id == process.id ){
+             if( actor.parent.id === process.id ){
                 process.children.push(actor);
              };
          });
@@ -86,7 +82,7 @@ const VueEnsemble = (props) => {
      const final = [];
 
      dataa.map( process => {
-        if(process.parent.id == undefined){
+        if(process.parent.id === undefined){
             process.parent = null;
             final.push(process);
         }

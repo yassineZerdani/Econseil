@@ -12,7 +12,7 @@ export const getActors = () => async dispatch => {
 
     var actors = [];
 
-    response.data.data.map(element => {
+    response.data.data.forEach(element => {
 
         var actor = {};
 
@@ -32,9 +32,9 @@ export const getActors = () => async dispatch => {
         var operationsIndex = element.relationships.field_acteur_operations.data.length;
         var childsIndex = element.relationships.field_sous_acteurs.data.length;
 
-        response.data.included.map(file => {
+        response.data.included.forEach(file => {
 
-            if (element.relationships.field_organisme.data.id == ID) {
+            if (element.relationships.field_organisme.data.id === ID) {
 
                 if (file.id === element.relationships.field_acteur_profile.data.id || file.id === undefined) {
 

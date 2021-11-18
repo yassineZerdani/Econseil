@@ -1,6 +1,6 @@
-import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+import { faExpand, faSearchMinus, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as imageSizing from '../../functions/ImageSizing';
 import { isActive } from '../../redux/navbar/acteur/action';
@@ -32,6 +32,8 @@ export default function Acteur(props) {
 
   /*-----------*/
 
+  console.log(Actor);
+
 
   return (
     <div>
@@ -58,7 +60,7 @@ export default function Acteur(props) {
               </button>
             </div>
             <div className="Diag" id="Diag1" style={{display: 'block'}} >
-              <img src="assets/images/93bf9d395db42247_c_fa10fac95ff2442d.png" className="OGimg" usemap="#4E1EEDC85FF233F4" border={0}/>
+              <img src="assets/images/93bf9d395db42247_c_fa10fac95ff2442d.png" alt="" className="OGimg" usemap="#4E1EEDC85FF233F4" border={0}/>
             </div>
       </div>
 

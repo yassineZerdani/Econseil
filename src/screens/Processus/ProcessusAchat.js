@@ -1,4 +1,4 @@
-import { faArrowsAltH, faArrowsAltV, faExpand, faSearchMinus, faSearchPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faExpand, faSearchMinus, faSearchPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -27,6 +27,8 @@ const ProcessusAchat = (props) => {
   });
 
   /*-----------*/
+
+  console.log(Proc);
 
   /* States */
 
@@ -59,7 +61,7 @@ const ProcessusAchat = (props) => {
      return(
        <tr>
          <td data-label="SOUS PROCESSUS :">
-           <img src="/images/busp.ico.gif" class="pd-b-7" />&nbsp;&nbsp;
+           <img src="/images/busp.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;
            <NavLink to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
          </td>
          <td data-label="FINALITÉ :"></td>
@@ -67,7 +69,7 @@ const ProcessusAchat = (props) => {
      );
    });
 
-  const displayDocs = Proc.documents.slice(pagesVisitedDocs, pagesVisitedDocs+elementsPerPage).filter(document => {
+  const displayDocs = Proc.documents.slice(pagesVisitedDocs, pagesVisitedDocs+elementsPerPage).filter((document, key) => {
     if (searchTerm == "") {
         return document;
     }
@@ -79,7 +81,7 @@ const ProcessusAchat = (props) => {
     return (
        <tr>
          <td data-label="DOCUMENT :">
-           <a download><img src="/images/extr.ico.gif" class="pd-b-7"/>&nbsp;&nbsp;{document.attributes.title}</a>
+           <a download><img src="/images/extr.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;{document.attributes.title}</a>
          </td>
          <td data-label="RÉFÉRENCE :"></td>
          <td data-label="TYPE :"></td>
@@ -89,7 +91,7 @@ const ProcessusAchat = (props) => {
    } 
  );
 
- const displayProcedures = Proc.procedures.slice(pagesVisitedProc, pagesVisitedProc+elementsPerPage).filter(procedure => {
+ const displayProcedures = Proc.procedures.slice(pagesVisitedProc, pagesVisitedProc+elementsPerPage).filter((procedure, key) => {
   if (searchTerm == "") {
       return procedure;
   }
@@ -101,7 +103,7 @@ const ProcessusAchat = (props) => {
   return (
      <tr>
        <td data-label="PROCÉDURE :">
-          <img src="/images/proc.ico.gif"  class="pd-b-7"/>&nbsp;&nbsp;
+          <img src="/images/proc.ico.gif" alt=""  className="pd-b-7"/>&nbsp;&nbsp;
           <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.attributes.title}</NavLink>
         </td>
        <td data-label="RÉFÉRENCE :"></td>
@@ -139,7 +141,7 @@ const ProcessusAchat = (props) => {
         </div>
         <br/>
         <div className="Diag" id="Diag1" style={{display: 'block'}} >
-          <img src={Proc.image} usemap="#4E1EEDC85FF233F4" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
+          <img src={Proc.image} usemap="#4E1EEDC85FF233F4" alt="" className="" border={0} style={{alignItems: "center", marginLeft: "26%"}}/>
         </div>
       </div>
       <div className={` ${isactive[1] ? '' : 'po-table-wrapper-b'}`}>
