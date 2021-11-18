@@ -62,7 +62,7 @@ const ProcessusAchat = (props) => {
        <tr>
          <td data-label="SOUS PROCESSUS :">
            <img src="/images/busp.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;
-           <NavLink to={'/ProcessusAchat/' + process.id}>{process.attributes.title}</NavLink>
+           <NavLink to={'/ProcessusAchat/' + process.id}>{process.nom}</NavLink>
          </td>
          <td data-label="FINALITÉ :"></td>
        </tr>
@@ -73,7 +73,7 @@ const ProcessusAchat = (props) => {
     if (searchTerm == "") {
         return document;
     }
-    else if (document.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+    else if (document.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
         return document;
     }
     }).map((document, key) => {
@@ -81,7 +81,7 @@ const ProcessusAchat = (props) => {
     return (
        <tr>
          <td data-label="DOCUMENT :">
-           <a download><img src="/images/extr.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;{document.attributes.title}</a>
+           <a download><img src="/images/extr.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;{document.nom}</a>
          </td>
          <td data-label="RÉFÉRENCE :"></td>
          <td data-label="TYPE :"></td>
@@ -95,7 +95,7 @@ const ProcessusAchat = (props) => {
   if (searchTerm == "") {
       return procedure;
   }
-  else if (procedure.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+  else if (procedure.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
       return procedure;
   }
   }).map((procedure, key) => {
@@ -104,7 +104,7 @@ const ProcessusAchat = (props) => {
      <tr>
        <td data-label="PROCÉDURE :">
           <img src="/images/proc.ico.gif" alt=""  className="pd-b-7"/>&nbsp;&nbsp;
-          <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.attributes.title}</NavLink>
+          <NavLink to={'/ProcessusOrganisationnel/' + procedure.id}>{procedure.nom}</NavLink>
         </td>
        <td data-label="RÉFÉRENCE :"></td>
        <td data-label="ACTIVITÉ DE RATTACHEMENT :"></td>

@@ -94,7 +94,7 @@ const ProcessusOrganisationnel = (props) => {
     if (searchTerm == "") {
         return operation;
     }
-    else if (operation.attributes.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+    else if (operation.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
         return operation;
     }
     }).map((operation, key) => {
@@ -104,11 +104,11 @@ const ProcessusOrganisationnel = (props) => {
          <td data-label="OPÉRATION :">
            <NavLink onClick={() => { dispatch(getOperation(operation.id)) }} to={'/operation/'+operation.id}>
              <img src="/images/op.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
-             {operation.attributes.title}
+             {operation.nom}
            </NavLink>
          </td>
          <td data-label="ACTEURS :">
-            <NavLink onClick={() => { dispatch(getOperationActors(operation.id)) }} to={'/operation-acteurs/'+operation.id}>
+            <NavLink to={'/operation-acteurs/'+operation.id}>
              Acteurs
             </NavLink>
          </td>
