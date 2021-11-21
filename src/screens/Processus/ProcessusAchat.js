@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import React, {useState} from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 import { isActive } from '../../redux/navbar/procmet/action';
+import { download } from '../../functions/downloadDocuments';
 
 
 const ProcessusAchat = (props) => {
@@ -56,7 +57,14 @@ const ProcessusAchat = (props) => {
 
 
 
-  const displayChilds = Proc.childs.map( (process, key) => {
+  const displayChilds = Proc.childs.slice(pagesVisitedChilds, pagesVisitedChilds+elementsPerPage).filter((process, key) => {
+    if (searchTerm == "") {
+        return process;
+    }
+    else if (process.nom.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return process;
+    }
+    }).map( (process, key) => {
 
      return(
        <tr>
@@ -81,11 +89,11 @@ const ProcessusAchat = (props) => {
     return (
        <tr>
          <td data-label="DOCUMENT :">
-           <a download><img src="/images/extr.ico.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;{document.nom}</a>
+          <button onClick={()=>download(document.file)}><img src="/images/extr.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;{document.nom}</button>
          </td>
          <td data-label="RÉFÉRENCE :"></td>
          <td data-label="TYPE :"></td>
-         <td data-label="DATE DE PUBLICATION :"></td>
+         <td data-label="DATE DE PUBLICATION :">{document.date}</td>
        </tr>
      );
    } 
@@ -108,7 +116,7 @@ const ProcessusAchat = (props) => {
         </td>
        <td data-label="RÉFÉRENCE :"></td>
        <td data-label="ACTIVITÉ DE RATTACHEMENT :"></td>
-       <td data-label="DATE D'APPLICATION :"></td>
+       <td data-label="DATE D'APPLICATION :">{procedure.date}</td>
      </tr>
    );
  } 

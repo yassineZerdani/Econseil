@@ -82,7 +82,7 @@ export default function Acteur(props) {
           </tbody>
         </table>
       </div>
-      <div className={`po-table-wrapper ${isactive[1] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
+      <div className={`po-table-wrapper ${isactive[0] ? 'po-table-wrapper' : 'po-table-wrapper-b'}`} >
         <div>
           <h5 style={{padding: '1%', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Description</h5>
           <p style={{padding: '2%', color: 'grey'}}>{Actor.description}</p>

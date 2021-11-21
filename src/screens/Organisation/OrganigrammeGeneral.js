@@ -14,9 +14,12 @@ const OrganigrammeGeneral = (props) => {
           height: '90px',
         },
         node: {
-          backgroundColor: '#4C84FF',
-          border: 'solid #1890ff',
+          backgroundColor: '#00A4BF',
+          border: 'solid #00A4BF',
           borderRadius: '0px',
+          width: '200px',
+          backgroundImage: `url("images/ml.jpg")`,
+          backgroundRepeat: 'no-repeat'
         },
         text: {
           color: 'white',

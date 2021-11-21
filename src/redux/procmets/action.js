@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../api/config';
+import { setTime } from '../../functions/setTime'
 
 export const getProcess = () => async dispatch => {
 
@@ -37,7 +38,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_metier_docs.data[i].id) || file.id === undefined) {
 
-                        procmet.documents.push({id: file.id, nom: file.attributes.title});
+                        procmet.documents.push({id: file.id, nom: file.attributes.title, date: setTime(file.attributes.created), file: config.drupal_url+'//sites/econseil.dd/files/'+file.attributes.title});
                         Procsorg = [...Procsorg, procmet];
 
                     }
@@ -47,7 +48,7 @@ export const getProcess = () => async dispatch => {
 
                     if ((file.id === order.relationships.field_proc_metier_proc_org.data[i].id) || file.id === undefined) {
 
-                        procmet.procedures.push({id: file.id, nom: file.attributes.title});
+                        procmet.procedures.push({id: file.id, nom: file.attributes.title, date: setTime(file.attributes.created)});
                         Procsorg = [...Procsorg, procmet];
 
                     }
