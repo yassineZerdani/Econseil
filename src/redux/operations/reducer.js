@@ -1,14 +1,6 @@
 
 const initialState = {
     operations : [],
-    operation: {
-        nom: "",
-        procedure: {nom: "", id: ""},
-        type: "",
-        acteurs: [],
-        documents: [],
-        description: ""
-    },
     operation_acteurs : [],
 };
 const opReducer = (state = initialState, action) => {
@@ -17,11 +9,6 @@ const opReducer = (state = initialState, action) => {
             return{
                 ...state,
                 operations: action.payload
-            }
-        case 'GET_OPERATION':
-            return{
-                ...state,
-                operation: action.payload
             }
         case 'GET_OPERATION_ACTORS':
             return{

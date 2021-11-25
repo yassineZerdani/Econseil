@@ -15,9 +15,9 @@ export const getData = () => async dispatch => {
 
     var Docs = [];
 
-    response.data.data.forEach( order => {
+    response.data.data.map( order => {
         console.log(order)
-        response.data.included.forEach( file => {
+        response.data.included.map( file => {
             if( order.relationships.field_organisme.data.id === ID){
             if ( file.id === order.relationships.field_document.data.id ){
 

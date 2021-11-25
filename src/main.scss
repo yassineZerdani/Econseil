@@ -875,3 +875,18 @@ $poppins: "Poppins", sans-serif;
         left: 30px;
     }
 }
+
+.vue-ensemble {
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    top: 0px;
+    left: 120px;
+    height: 60vh;
+    width: 80%;
+    ul {
+        top: 0px;
+    }
+}

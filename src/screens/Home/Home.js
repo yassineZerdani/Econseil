@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProcedures } from '../../redux/procorgs/action';
+import { isActive } from '../../redux/sidebar/action';
+import { isCollapsed } from '../../redux/sidebar/subs/action';
+import { useDispatch } from 'react-redux';
 
 const Home = (props) => {
 
@@ -19,6 +22,8 @@ const Home = (props) => {
 
 
   /*----------------*/
+
+  const dispatch = useDispatch();
 
 
 
@@ -52,7 +57,7 @@ const Home = (props) => {
           <div className="col-lg-3 col-sm-6 my-2">
             <div className="card" style={{ height: '245px' }}>
               <div className="card-header" style={{ backgroundColor: '#349beb' }}>
-                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/organigramme'
+                <h6  style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink onClick={() => dispatch(isActive(2)) && dispatch(isCollapsed(2))} to='/organigramme'
                   style={{ color: 'white' }}>Organigramme</NavLink></h6>
               </div>
               <div className="home-card" style={{backgroundImage: `url("assets/images/organigramme (black).svg")`}}></div>
@@ -61,7 +66,7 @@ const Home = (props) => {
           <div className="col-lg-3 col-sm-6 my-2">
             <div className="card" style={{ height: '245px' }}>
               <div className="card-header" style={{ backgroundColor: '#eb6534' }}>
-                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/vue-ensemble'
+                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink onClick={() => dispatch(isActive(3)) && dispatch(isCollapsed(3))} to='/vue-ensemble'
                   style={{ color: 'white' }}>Vue d'ensemble</NavLink></h6>
               </div>
               <div className="home-card" style={{backgroundImage: `url("assets/images/ve.svg")`}}></div>
@@ -70,7 +75,7 @@ const Home = (props) => {
           <div className="col-lg-3 col-sm-6 my-2">
             <div className="card" style={{ height: '245px' }}>
               <div className="card-header bg-success">
-                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/procedures'
+                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink onClick={() => dispatch(isActive(4)) && dispatch(isCollapsed(4))} to='/procedures'
                   style={{ color: 'white' }}>Index des Procédures</NavLink></h6>
               </div>
               <div className="home-card" style={{backgroundImage: `url("assets/images/process.svg")`}}></div>
@@ -79,7 +84,7 @@ const Home = (props) => {
           <div className="col-lg-3 col-sm-6 my-2">
             <div className="card" style={{ height: '245px' }}>
               <div className="card-header bg-secondary">
-                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink to='/documents-utiles' style={{ color: 'white' }}>Documents</NavLink></h6>
+                <h6 style={{ textAlign: 'center' }} className="card-title mg-b-10 tx-rem-1-175 tx-center"><NavLink onClick={() => dispatch(isActive(5)) && dispatch(isCollapsed(5))} to='/documents-utiles' style={{ color: 'white' }}>Documents</NavLink></h6>
               </div>
               <div className="home-card" style={{backgroundImage: `url("assets/images/Document.svg")`}}></div>
             </div>

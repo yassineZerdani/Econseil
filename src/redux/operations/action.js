@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../api/config';
+import { setTime } from '../../functions/setTime';
 
 export const getOperations = () => async dispatch => {
     
@@ -7,118 +8,63 @@ export const getOperations = () => async dispatch => {
 
     const response = await axios.get(config.drupal_url+'/jsonapi/node/operation?include=field_operation_acteurs,field_operation_docs,field_operation_proc_org');
 
-      var Procsorg = [];
+    var operations = [];
 
-    response.data.data.forEach(order => {
+    response.data.data.map( element => {
 
-        order['documents'] = [];
-        order['acteurs'] = [];
-        order['procedure'] = {};
+        var operation = {};
 
-        var documentsIndex = order.relationships.field_operation_docs.data.length;
-        var acteursIndex = order.relationships.field_operation_acteurs.data.length
+        operation['id'] = element.id;
+        operation['nom'] = element.attributes.title;
+        operation['type'] = element.attributes.field_type_operation;
+        operation['description'] = element.attributes.field_description_operation;
+        operation['date'] = element.attributes.created;
+        operation['procedure'] = {};
+        operation['documents'] = [];
+        operation['acteurs'] = [];
 
-        response.data.included.forEach(file => {
+        var documentsIndex = element.relationships.field_operation_docs.data.length;
+        var acteursIndex = element.relationships.field_operation_acteurs.data.length
 
-            if (order.relationships.field_organisme.data.id === ID) {
+        response.data.included.map( file => {
+
+            if (element.relationships.field_organisme.data.id === ID) {
 
                 for (let i = 0; i < documentsIndex; i++) {
 
-                    if ((file.id === order.relationships.field_operation_docs.data[i].id) || file.id === undefined) {
+                    if ((file.id === element.relationships.field_operation_docs.data[i].id) || file.id === undefined) {
 
-                        order.documents.push(file);
-                        Procsorg = [...Procsorg, order];
-
+                        operation.documents.push(file);
                     }
                 }
 
                 for (let i = 0; i < acteursIndex; i++) {
 
-                    if ((file.id === order.relationships.field_operation_acteurs.data[i].id) || file.id === undefined) {
+                    if ((file.id === element.relationships.field_operation_acteurs.data[i].id) || file.id === undefined) {
 
-                        order.acteurs.push(file);
-                        Procsorg = [...Procsorg, order];
-
+                        operation.acteurs.push(file);
                     }
                 }
 
-                if (file.id === order.relationships.field_operation_proc_org.data.id || file.id === undefined) {
+                if (file.id === element.relationships.field_operation_proc_org.data.id || file.id === undefined) {
 
-                    order.procedure = file
-                    Procsorg = [...Procsorg, order];
-
+                    operation.procedure = {id: file.id, nom: file.attributes.title}
                 }
+
+                operations = [...operations, operation];
+
             }
         }
         )
     }
     );
+
+    console.log(operations)
   
       dispatch(
           {
               type: 'GET_OPERATIONS',
-              payload: Procsorg
-          }
-      );
-}
-
-export const getOperation = (identifier) => async dispatch => {
-    
-    const response = await axios.get(config.drupal_url+'/jsonapi/node/operation/'+identifier+'?include=field_operation_acteurs,field_operation_docs,field_operation_proc_org');
-
-      var order = response.data.data;
-
-      console.log(order);
-
-      var operation = {};
-
-      operation['nom'] = order.attributes.title;
-      operation['procedure'] = {nom: "", id: ""};
-      operation['type'] = "";
-      operation['acteurs'] = [];
-      operation['documents'] = [];
-      operation['description'] = "";
-
-      var documentsIndex = order.relationships.field_operation_docs.data.length;
-      var acteursIndex = order.relationships.field_operation_acteurs.data.length;
-
-        response.data.included.forEach(file => {
-
-                 for (let i = 0; i < documentsIndex; i++) {
-
-                     if ((file.id === order.relationships.field_operation_docs.data[i].id) || file.id === undefined) {
-
-                         operation.documents.push(file);
-
-                     }
-                 }
-
-                 for (let i = 0; i < acteursIndex; i++) {
-
-                     if ((file.id === order.relationships.field_operation_acteurs.data[i].id) || file.id === undefined) {
-                         
-                         var acteur = {};
-                         acteur["nom"] = file.attributes.title;
-                         acteur["id"] = file.id;
-                         operation.acteurs.push(acteur);
-
-                     }
-                 }
-
-                 if (file.id === order.relationships.field_operation_proc_org.data.id || file.id === undefined) {
-
-                     operation.procedure.nom = file.attributes.title;
-                     operation.procedure.id= file.id;
-
-
-                 }
-        }
-        );
-  
-      dispatch(
-          {
-              type: 'GET_OPERATION',
-              payload: operation
+              payload: operations
           }
       );
 }
@@ -134,7 +80,7 @@ export const getOperationActors = (identifier) => async dispatch => {
 
     var actors = [];
 
-    response.data.data.forEach(element => {
+    response.data.data.map(element => {
 
         var actor = {};
 
@@ -146,7 +92,7 @@ export const getOperationActors = (identifier) => async dispatch => {
 
         var childsIndex = element.relationships.field_acteur_sous_acteurs.data.length;
 
-        response.data.included.forEach(file => {
+        response.data.included.map(file => {
 
             if (element.relationships.field_organisation.data.id === ID) {
 

@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getOperations } from '../../redux/operations/action';
 
-const Operation = () => {
+const Operation = (props) => {
 
+  useEffect(() => {
 
-  const Operation = useSelector(state => state.operations.operation)
+    props.getOperations();
+    
+  }, []);
 
-  console.log(Operation)
+  const { operations } = props
+
+  console.log(operations)
+
+  var operation = {};
+
+  operations.map( op => {
+    if( op.id == props.match.params.id){
+      operation = op;
+    }
+  });
+
+  console.log(operations);
 
 
   /* Pager */
@@ -54,7 +71,7 @@ const Operation = () => {
 
 return (
     <div>
-    <h5 className="po-h">{Operation.nom}</h5>
+    <h5 className="po-h">{operation.nom}</h5>
 
     <div className="po-table-wrapper" >
       <table className="po-table" >
@@ -69,9 +86,9 @@ return (
           <tr>
             <td>
                 <img src="/images/proc.ico.gif" alt="" className="pd-b-7" />&nbsp;&nbsp;
-                <NavLink to={'/ProcessusOrganisationnel/' + Operation.procedure.id}>{Operation.procedure.nom}</NavLink>
+                <NavLink to={'/ProcessusOrganisationnel/' + operation.procedure.id}>{operation.procedure.nom}</NavLink>
             </td>
-            <td>{Operation.type}</td>
+            <td>{operation.type}</td>
             <td></td>
           </tr>
         </tbody>
@@ -80,14 +97,19 @@ return (
     <div className= "po-table-wrapper" >
         <div>
           <h5 style={{padding: '1%', backgroundColor: '#324960', color: 'white', textAlign:"left", fontSize:"14px"}}>Description de l'opération</h5>
-          <p style={{padding: '2%', color: 'grey'}}>{Operation.description}</p>
+          <p style={{padding: '2%', color: 'grey'}}>{operation.description}</p>
         </div>
       </div>
   </div>
 )
 }
 
-export default Operation;
+const mapStateToProps = (state) => {
+  return {
+    operations: state.operations.operations
+  }
+}
+export default connect(mapStateToProps, { getOperations })(Operation);
 
 
 

@@ -7,6 +7,7 @@ import React, {useState} from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 import { isActive } from '../../redux/navbar/procmet/action';
 import { download } from '../../functions/downloadDocuments';
+import { isCollapsed } from '../../redux/sidebar/subs/action';
 
 
 const ProcessusAchat = (props) => {

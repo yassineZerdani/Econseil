@@ -11,9 +11,9 @@ export const getProcess = () => async dispatch => {
 
     console.log(response)
 
-    var Procsorg = [];
+    var procmets = [];
 
-    response.data.data.forEach(order => {
+    response.data.data.map(order => {
 
         var procmet = {};
 
@@ -30,7 +30,7 @@ export const getProcess = () => async dispatch => {
         var proceduresIndex = order.relationships.field_proc_metier_proc_org.data.length
         var childsIndex = order.relationships.field_proc_met_sous_proc_m.data.length
 
-        response.data.included.forEach(file => {
+        response.data.included.map(file => {
 
             if (order.relationships.field_organisme.data.id === ID) {
 
@@ -39,7 +39,6 @@ export const getProcess = () => async dispatch => {
                     if ((file.id === order.relationships.field_proc_metier_docs.data[i].id) || file.id === undefined) {
 
                         procmet.documents.push({id: file.id, nom: file.attributes.title, date: setTime(file.attributes.created), file: config.drupal_url+'//sites/econseil.dd/files/'+file.attributes.title});
-                        Procsorg = [...Procsorg, procmet];
 
                     }
                 }
@@ -49,7 +48,6 @@ export const getProcess = () => async dispatch => {
                     if ((file.id === order.relationships.field_proc_metier_proc_org.data[i].id) || file.id === undefined) {
 
                         procmet.procedures.push({id: file.id, nom: file.attributes.title, date: setTime(file.attributes.created)});
-                        Procsorg = [...Procsorg, procmet];
 
                     }
                 }
@@ -59,7 +57,6 @@ export const getProcess = () => async dispatch => {
                     if ((file.id === order.relationships.field_proc_met_sous_proc_m.data[i].id) || file.id === undefined) {
 
                         procmet.childs.push({id: file.id, nom: file.attributes.title});
-                        Procsorg = [...Procsorg, procmet];
 
                     }
                 }
@@ -69,7 +66,6 @@ export const getProcess = () => async dispatch => {
                     if (file.id === order.relationships.field_proc_met_proc_met_pa.data.id || file.id === undefined) {
 
                         procmet.parent = {id: file.id, nom: file.attributes.title};
-                        Procsorg = [...Procsorg, procmet];
 
                     }
                 }
@@ -77,16 +73,18 @@ export const getProcess = () => async dispatch => {
                 if (file.id === order.relationships.field_img_proc_met.data.id || file.id === undefined) {
 
                     procmet.image = config.drupal_url + file.attributes.uri.url
-                    Procsorg = [...Procsorg, procmet];
 
                 }
+
+                procmets = [...procmets, procmet];
+                
             }
         }
         )
     }
     );
 
-    var Procmets = Procsorg.reduce((unique, o) => {
+    var final = procmets.reduce((unique, o) => {
         if(!unique.some(obj => obj.id === o.id)) {
           unique.push(o);
         }
@@ -97,7 +95,7 @@ export const getProcess = () => async dispatch => {
     dispatch(
         {
             type: 'GET_PROCMET',
-            payload: Procmets
+            payload: final
         }
     );
 

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getOperation } from '../../redux/operations/action';
 import { getOperationActors } from '../../redux/operations/action';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
@@ -11,6 +10,8 @@ import React, { useState } from 'react';
 import * as imageSizing from '../../functions/ImageSizing';
 import { download } from '../../functions/downloadDocuments';
 import { isActive } from '../../redux/navbar/procorg/action';
+import { isCollapsed } from '../../redux/sidebar/subs/action';
+import { getOperations } from '../../redux/operations/action';
 
 
 const ProcessusOrganisationnel = (props) => {
@@ -34,6 +35,11 @@ const ProcessusOrganisationnel = (props) => {
   /*-----------*/
 
   console.log(Procedure)
+
+  const yo = () => {
+    dispatch(getOperations());
+    dispatch(isActive(4));
+  }
 
   /* States */
 
@@ -102,7 +108,7 @@ const ProcessusOrganisationnel = (props) => {
      return (
        <tr>
          <td data-label="OPÉRATION :">
-           <NavLink onClick={() => { dispatch(getOperation(operation.id)) }} to={'/operation/'+operation.id}>
+           <NavLink onClick={yo} to={'/operation/'+operation.id}>
              <img src="/images/op.gif" alt="" className="pd-b-7"/>&nbsp;&nbsp;
              {operation.nom}
            </NavLink>

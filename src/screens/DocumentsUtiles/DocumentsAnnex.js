@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getData } from '../../redux/documents/action';
 import { setTime } from '../../functions/setTime';
 import { download } from '../../functions/downloadDocuments';
-
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPaginate from 'react-paginate';
@@ -55,6 +54,16 @@ const DocumentsAnnex = (props) => {
             return document;
         }
     }).map((document, key) => {
+
+        if(documents === []){
+            return (
+                <tr key={key} >
+                    <td data-label="il n'y a pas de résultats">
+                        il n'y a pas de résultats
+                    </td>
+                </tr>
+            )
+        }
 
         return (
             <tr key={key} >

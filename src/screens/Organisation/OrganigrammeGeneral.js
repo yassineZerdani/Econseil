@@ -10,14 +10,14 @@ const OrganigrammeGeneral = (props) => {
 
     const styles = {
         lines: {
-          color: '#1890ff',
-          height: '90px',
+          color: '#00A4BF',
+          height: '80px',
         },
         node: {
           backgroundColor: '#00A4BF',
           border: 'solid #00A4BF',
           borderRadius: '0px',
-          width: '200px',
+          width: '20vh',
           backgroundImage: `url("images/ml.jpg")`,
           backgroundRepeat: 'no-repeat'
         },

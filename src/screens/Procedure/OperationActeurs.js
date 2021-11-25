@@ -63,6 +63,25 @@ const OperationActeurs = () => {
         }
     }).map((acteur, key) => {
 
+        if(Acteurs.length === 0){
+            return (
+                <tr key={key} >
+                    <td data-label="il n'y a pas de résultats">
+                        il n'y a pas de résultats
+                    </td>
+                    <td data-label="il n'y a pas de résultats">
+                        il n'y a pas de résultats
+                    </td>
+                    <td data-label="il n'y a pas de résultats">
+                        il n'y a pas de résultats
+                    </td>
+                    <td data-label="il n'y a pas de résultats">
+                        il n'y a pas de résultats
+                    </td>
+                </tr>
+            )
+        }
+
         console.log(acteur);
 
         if(acteur.childs[0] !== undefined){

@@ -11,12 +11,15 @@ const VueEnsemble = (props) => {
 
     const styles = {
         lines: {
-          color: '#1890ff',
+          color: '#212A39',
           height: '90px',
         },
         node: {
-          backgroundColor: '#4C84FF',
-          border: '1px solid #1890ff',
+          backgroundColor: '#212A39',
+          border: '1px solid #212A39',
+          borderRadius: '30px',
+          height: '70px',
+          width: '150px',
         },
         text: {
           color: 'white',
@@ -96,8 +99,8 @@ const VueEnsemble = (props) => {
         <div>
             <h5 className="vde">Vue d'ensemble</h5>
 
-            <div className="organigramme" >
-                <StyledTree data={final} direction onClick={ item => {
+            <div className="vue-ensemble" >
+                <StyledTree data={final} onClick={ item => {
                     history.push("/ProcessusAchat/"+item.id)
                     } } />
             </div>
