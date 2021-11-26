@@ -27,7 +27,7 @@ const Sidebar = () => {
                 <path className="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
               </g>
             </svg>
-            <span className="brand-name">Dashboard</span>
+            <span className="brand-name">Tableau De Bord</span>
           </NavLink>
         </div>
 
